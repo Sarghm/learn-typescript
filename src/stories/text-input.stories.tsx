@@ -2,20 +2,23 @@
 
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { Button, ButtonProps } from '../components/button';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../theme';
 import { Box } from '../components/box';
+import { TextInput, TextInputProps } from '../components/text-input';
 
 export default {
-  title: 'Button',
-  component: Button,
-} as Meta;
+  title: 'Text Input',
+  component: TextInput,
+  args: {
+    placeholder: 'This is my text placeholder.',
+  },
+} as Meta<TextInputProps>;
 
-export const SingleButton = (props: ButtonProps) => (
+export const SingleTestimonial = (props: TextInputProps) => (
   <ThemeProvider theme={theme}>
     <Box width={300}>
-      <Button {...props} />
+      <TextInput {...props} />
     </Box>
   </ThemeProvider>
 );

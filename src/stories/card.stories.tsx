@@ -2,20 +2,23 @@
 
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { Button, ButtonProps } from '../components/button';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '../theme';
 import { Box } from '../components/box';
+import { Card } from '../components/card';
+import { Typography } from '../components/typography';
 
 export default {
-  title: 'Button',
-  component: Button,
+  title: 'Card',
+  component: Card,
 } as Meta;
 
-export const SingleButton = (props: ButtonProps) => (
+export const SingleCard = () => (
   <ThemeProvider theme={theme}>
-    <Box width={300}>
-      <Button {...props} />
-    </Box>
+    <Card>
+      <Box p="ten">
+        <Typography>Hello there!</Typography>
+      </Box>
+    </Card>
   </ThemeProvider>
 );

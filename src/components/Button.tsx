@@ -1,51 +1,42 @@
 import React from 'react';
+import { Box } from './box';
+import { Typography } from './typography';
+import { DefaultTheme } from 'styled-components';
+import { theme } from '../theme';
+
+const ButtonVariants: {
+  [key: string]: {
+    backgroundColor: keyof DefaultTheme['colors'];
+    textColor: keyof DefaultTheme['colors'];
+    shadowColor: keyof DefaultTheme['colors'];
+  };
+} = {
+  default: {
+    backgroundColor: 'pink',
+    textColor: 'white',
+    shadowColor: 'pinkDark',
+  },
+};
 
 export interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
-  label: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
+  variant?: keyof typeof ButtonVariants;
 }
 
-/**
- * Primary UI component for user interaction
- */
-export const Button: React.FC<ButtonProps> = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}) => {
-  const mode = primary
-    ? 'storybook-button--primary'
-    : 'storybook-button--secondary';
+const Button = ({ variant = 'default' }: ButtonProps) => {
+  const { backgroundColor, textColor, shadowColor } = ButtonVariants[variant];
   return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(
-        ' '
-      )}
-      style={{ backgroundColor }}
-      {...props}
+    <Box
+      borderRadius={8}
+      backgroundColor={backgroundColor}
+      px="twenty"
+      py="ten"
+      boxShadow={`0px 10px 0px ${theme.colors[shadowColor]}`}
     >
-      {label}
-    </button>
+      <Typography textStyle="h3" color={textColor} textAlign="center">
+        Hello there
+      </Typography>
+    </Box>
   );
 };
+
+export { Button };

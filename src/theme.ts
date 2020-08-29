@@ -15,6 +15,9 @@ const theme = {
     'black-twenty': 'rgba(47,46,46,0.2)',
     'black-ten': 'rgba(47,46,46,0.1)',
   },
+  shadows: {
+    'black-ten': `0px 0px 10px rgba(47,46,46,0.1)`,
+  },
   textStyles: {
     h1: {
       fontFamily: 'Sen, sans-serif',

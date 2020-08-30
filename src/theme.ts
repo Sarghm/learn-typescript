@@ -4,6 +4,17 @@ const theme = {
     ten: 10,
     fifteen: 15,
     twenty: 20,
+    thirty: 30,
+    oneHundred: 100,
+    oneHundredFifty: 150,
+    twoHundred: 200,
+  },
+  grid: {
+    maxWidth: 1200,
+    breakpoints: [768, 998, 1200],
+  },
+  radii: {
+    sm: 8,
   },
   colors: {
     green: `rgba(30,189,198,1)`,
@@ -24,7 +35,7 @@ const theme = {
       fontWeight: 800,
       fontSize: '56px',
       lineHeight: '84px',
-      letterSpacing: '-1px',
+      letterSpacing: '-2px',
     },
     h2: {
       fontFamily: 'Sen, sans-serif',
@@ -39,6 +50,13 @@ const theme = {
       fontSize: '26px',
       lineHeight: '39px',
       letterSpacing: '-1px',
+    },
+    h3Light: {
+      fontFamily: 'Sen, sans-serif',
+      fontWeight: 500,
+      fontSize: '26px',
+      lineHeight: '39px',
+      letterSpacing: '-1.5px',
     },
     h4: {
       fontFamily: 'Sen, sans-serif',

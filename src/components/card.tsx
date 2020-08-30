@@ -11,7 +11,7 @@ const Card = ({ children }: CardProps) => {
       flexGrow={1}
       boxShadow="black-ten"
       borderWidth={1}
-      borderRadius={8}
+      borderRadius="sm"
       borderColor="black-twenty"
       borderStyle="solid"
     >

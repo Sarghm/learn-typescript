@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box } from './box';
 import { Typography } from './typography';
 import { DefaultTheme } from 'styled-components';
 import { theme } from '../theme';
+
+const BUTTON_DEPTH = 10;
 
 const ButtonVariants: {
   [key: string]: {
@@ -20,20 +22,39 @@ const ButtonVariants: {
 
 export interface ButtonProps {
   variant?: keyof typeof ButtonVariants;
+  textStyle?: keyof typeof theme.textStyles;
+  children: string;
 }
 
-const Button = ({ variant = 'default' }: ButtonProps) => {
+const Button = ({
+  variant = 'default',
+  children,
+  textStyle = 'h3',
+}: ButtonProps) => {
+  const [active, setActive] = useState<boolean>(false);
   const { backgroundColor, textColor, shadowColor } = ButtonVariants[variant];
   return (
     <Box
-      borderRadius={8}
+      style={{ cursor: 'pointer' }}
+      borderRadius="sm"
       backgroundColor={backgroundColor}
       px="twenty"
       py="ten"
-      boxShadow={`0px 10px 0px ${theme.colors[shadowColor]}`}
+      onMouseDown={() => setActive(true)}
+      onMouseUp={() => setActive(false)}
+      marginTop={active ? BUTTON_DEPTH : 0}
+      boxShadow={`0px ${active ? 0 : BUTTON_DEPTH}px 0px ${
+        theme.colors[shadowColor]
+      }`}
+      alignSelf="center"
     >
-      <Typography textStyle="h3" color={textColor} textAlign="center">
-        Hello there
+      <Typography
+        textStyle={textStyle}
+        color={textColor}
+        textAlign="center"
+        flexGrow={1}
+      >
+        {children}
       </Typography>
     </Box>
   );

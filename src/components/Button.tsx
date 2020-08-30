@@ -35,6 +35,7 @@ const Button = ({
   const { backgroundColor, textColor, shadowColor } = ButtonVariants[variant];
   return (
     <Box
+      position="relative"
       style={{ cursor: 'pointer' }}
       borderRadius="sm"
       backgroundColor={backgroundColor}
@@ -42,7 +43,7 @@ const Button = ({
       py="ten"
       onMouseDown={() => setActive(true)}
       onMouseUp={() => setActive(false)}
-      marginTop={active ? BUTTON_DEPTH : 0}
+      top={active ? BUTTON_DEPTH : 0}
       boxShadow={`0px ${active ? 0 : BUTTON_DEPTH}px 0px ${
         theme.colors[shadowColor]
       }`}

@@ -11,6 +11,7 @@ import { SectionContainer } from '../components/section-container';
 import { theme } from '../theme';
 import { VideoPlayer } from '../components/video-player';
 import { Button } from '../components/button';
+import { InfoPoint } from '../components/info-point';
 
 const VIDEO_CONTAINER_ASPECT_RATIO = 0.56;
 const TEXT_CONTAINER_INNER_PADDING_BOTTOM = theme.space.oneHundred;
@@ -28,12 +29,7 @@ const IntroductionSection = () => {
                 flexDirection="column"
                 py={TEXT_CONTAINER_INNER_PADDING_BOTTOM}
               >
-                <Typography
-                  textStyle="h1"
-                  color="white"
-                  textAlign="center"
-                  lineHeight={theme.textStyles.h1.fontSize}
-                >
+                <Typography textStyle="h1" color="white" textAlign="center">
                   JavaScript to TypeScript
                 </Typography>
                 <Box mt="twenty" px="oneHundred">
@@ -67,7 +63,27 @@ const IntroductionSection = () => {
           </GridRow>
           <GridRow mt="twenty">
             <GridColumn offset={3} span={6}>
-              <Button>Get the first section for free!</Button>
+              <Button textStyle="h3">Get the first section for free!</Button>
+            </GridColumn>
+          </GridRow>
+          <GridRow pt="fifty" pb="oneHundred">
+            <GridColumn span={4}>
+              <InfoPoint
+                title="⚡️ Lightning-fast learning"
+                description="Learn the basics of TypeScript in just under two hours. No frills; just the core knowledge you’ll need to start writing TypeScript."
+              />
+            </GridColumn>
+            <GridColumn span={4}>
+              <InfoPoint
+                title="⚡️ All JavaScript developers welcome"
+                description="This course teaches TypeScript through quick, simple exercises, so as long as you’re familiar with basic JavaScript, this course is for you."
+              />
+            </GridColumn>
+            <GridColumn span={4}>
+              <InfoPoint
+                title="⚡️ Become TypeScript ready"
+                description="After you’ve finished the course, you’ll have everything you need to start writing TypeScript in your next project, or upgrade an existing JavaScript codebase."
+              />
             </GridColumn>
           </GridRow>
         </GridContainer>

@@ -6,7 +6,7 @@ const AppHeader = () => {
     <>
       <link href={reset} rel="stylesheet" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Sen:wght@400;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Sen:wght@400;600;800&display=swap"
         rel="stylesheet"
       />
       <link

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { SectionContainer } from '../components/section-container';
 import {
   GridContainer,
@@ -12,6 +12,8 @@ import {
 } from '../components/checklist-item';
 import { Typography } from '../components/typography';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
+import { useTrail, animated, useSprings } from 'react-spring';
+import { DefaultAnimationConfigMediumBounce } from '../consts/animated';
 
 const CHECK_LIST_ITEMS: CheckListItemProps[] = [
   {
@@ -29,7 +31,27 @@ const CHECK_LIST_ITEMS: CheckListItemProps[] = [
 ];
 
 const CourseChecklist = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
+
+  const trail = useTrail(CHECK_LIST_ITEMS.length, {
+    opacity: isAnimatedIn ? 1 : 0,
+    transform: `translateY(${isAnimatedIn ? 0 : 100}px)`,
+    config: DefaultAnimationConfigMediumBounce,
+  });
+
+  const springs = useSprings(
+    CHECK_LIST_ITEMS.length,
+    CHECK_LIST_ITEMS.map((el, idx) => ({
+      transform: hoveredIndex === idx ? `scale(1,1)` : `scale(0.85,0.85)`,
+      opacity: hoveredIndex === null ? 1 : hoveredIndex === idx ? 1.0 : 0.2,
+    }))
+  );
+
+  useEffect(() => {
+    setIsAnimatedIn(true);
+  }, []);
 
   return (
     <SectionContainer backgroundColor="black" py="oneHundred">
@@ -45,9 +67,20 @@ const CourseChecklist = () => {
         <GridRow mt="fifty">
           <GridColumn offset={1} span={5}>
             {CHECK_LIST_ITEMS.map((item, i) => (
-              <Box key={item.title} mt={i !== 0 ? 'thirty' : undefined}>
-                <CheckListItem {...item} />
-              </Box>
+              <animated.div
+                key={item.title}
+                style={{
+                  ...trail[i],
+                }}
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+              >
+                <animated.div style={springs[i]}>
+                  <Box mt={i !== 0 ? 'thirty' : undefined}>
+                    <CheckListItem {...item} />
+                  </Box>
+                </animated.div>
+              </animated.div>
             ))}
           </GridColumn>
 

@@ -124,7 +124,7 @@ const StyledGridRow = styled(Box)<
 
 const GridRow = ({
   children,
-  withGutter = false,
+  withGutter = true,
   flexDirection = 'row',
   ...props
 }: GridRowProps) => {

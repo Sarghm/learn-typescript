@@ -5,6 +5,7 @@ import { ScreenDimensionsContextProvider } from './context/screen-dimensions';
 import { IntroductionSection } from './sections/introduction';
 import { AppHeader } from './components/app-header';
 import { CourseChecklist } from './sections/course-checklist';
+import { WhyTypeScript } from './sections/why-typescript';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <AppHeader />
         <IntroductionSection />
         <CourseChecklist />
+        <WhyTypeScript />
       </ScreenDimensionsContextProvider>
     </ThemeProvider>
   );

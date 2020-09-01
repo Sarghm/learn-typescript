@@ -6,6 +6,7 @@ import { IntroductionSection } from './sections/introduction';
 import { AppHeader } from './components/app-header';
 import { CourseChecklist } from './sections/course-checklist';
 import { WhyTypeScript } from './sections/why-typescript';
+import { CourseBreakdown } from './sections/course-breakdown';
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <IntroductionSection />
         <CourseChecklist />
         <WhyTypeScript />
+        <CourseBreakdown />
       </ScreenDimensionsContextProvider>
     </ThemeProvider>
   );

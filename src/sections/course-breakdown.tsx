@@ -42,6 +42,7 @@ const COURSE_SECTIONS: CourseSection[] = [
     points: ['Hello there', 'Hello there', 'Hello there', 'Hello there'],
     thumbnailImageURL: 'https://www.google.com',
   },
+  
 ];
 
 const CourseBreakdown = () => {

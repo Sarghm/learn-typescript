@@ -69,8 +69,8 @@ const theme = {
     body: {
       fontFamily: 'Nunito Sans, sans-serif',
       fontWeight: 400,
-      fontSize: '18px',
-      lineHeight: '27px',
+      fontSize: '16px',
+      lineHeight: '24px',
     },
   },
 };

@@ -1,6 +1,6 @@
 ## TODO
 
-[ ] Lay out Testimonials section
+[X] Lay out Testimonials section
 [ ] Lay out "Who am I" section
 [ ] Lay out "Get first 2 videos for free" section
 [ ] Lay out "Ready to buy it" section

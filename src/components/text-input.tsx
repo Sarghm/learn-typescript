@@ -18,6 +18,8 @@ const StyledInput = styled.input`
   box-shadow: ${(props) => props.theme.shadows['black-ten']};
   border-width: 1px;
   outline: 0px;
+  display: flex;
+  flex-grow: 1;
 `;
 
 const TextInput = ({ placeholder }: TextInputProps) => {

@@ -20,7 +20,7 @@ const AuthorIntroductionSection = () => {
   const { currentSize } = useScreenDimensionsContext();
 
   return (
-    <SectionContainer flexGrow={1} backgroundColor="white">
+    <SectionContainer flexGrow={1} backgroundColor="black">
       <GridContainer currentSize={currentSize}>
         <GridRow py="oneHundred">
           <GridColumn offset={2} span={8}>
@@ -37,12 +37,14 @@ const AuthorIntroductionSection = () => {
                 />
               </Box>
               <Box flexDirection="column">
-                <Typography textStyle="h3" color="green">
+                <Typography textStyle="h3" color="white">
                   An introduction to the teacher
                 </Typography>
-                <Typography textStyle="body" color="green" mt="ten">
-                  {AUTHOR_DETAILS.introduction}
-                </Typography>
+                <Box mt="ten">
+                  <Typography textStyle="body" color="white">
+                    {AUTHOR_DETAILS.introduction}
+                  </Typography>
+                </Box>
               </Box>
             </Box>
           </GridColumn>

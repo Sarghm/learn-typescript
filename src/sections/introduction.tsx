@@ -66,7 +66,7 @@ const IntroductionSection = () => {
               <Button textStyle="h3">Get the first section for free!</Button>
             </GridColumn>
           </GridRow>
-          <GridRow pt="fifty" pb="oneHundred">
+          <GridRow pt="fifty" pb="oneHundred" withGutter>
             <GridColumn span={4}>
               <InfoPoint
                 title="⚡️ Lightning-fast learning"

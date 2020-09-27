@@ -124,7 +124,7 @@ const StyledGridRow = styled(Box)<
 
 const GridRow = ({
   children,
-  withGutter = true,
+  withGutter = false,
   flexDirection = 'row',
   ...props
 }: GridRowProps) => {
@@ -164,11 +164,7 @@ const GridColumn = ({ children, span = 12, offset = 0 }: GridColumnProps) => {
   return (
     <>
       {offset ? (
-        <StyledGridColumn
-          span={offset}
-          gutter={withGutter ? gridGutter : 0}
-          columns={gridColumns}
-        />
+        <StyledGridColumn span={offset} gutter={0} columns={gridColumns} />
       ) : null}
       <StyledGridColumn
         span={span}

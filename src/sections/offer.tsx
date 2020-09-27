@@ -7,16 +7,33 @@ import {
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { SectionContainer } from '../components/section-container';
 import { Box } from '../components/box';
+import { Typography } from '../components/typography';
+import { TextInput } from '../components/text-input';
+import { Button } from '../components/button';
 
 const OfferSection = () => {
   const { currentSize } = useScreenDimensionsContext();
 
   return (
-    <SectionContainer flexGrow={1} backgroundColor="green">
+    <SectionContainer flexGrow={1} backgroundColor="white" py="fifty">
       <GridContainer currentSize={currentSize}>
         <GridRow>
-          <GridColumn span={12}>
-            <Box />
+          <GridColumn span={8} offset={2}>
+            <Typography textStyle="h2" color="pink" textAlign="center">
+              Get the first 2 videos for free.
+            </Typography>
+          </GridColumn>
+        </GridRow>
+        <GridRow>
+          <GridColumn span={8} offset={2}>
+            <Box flexDirection="column">
+              <Box mt="twenty">
+                <TextInput placeholder="enter@youremail.here" />
+              </Box>
+              <Box mt="twenty" justifyContent="center">
+                <Button textStyle="h4">Get the first bit free</Button>
+              </Box>
+            </Box>
           </GridColumn>
         </GridRow>
       </GridContainer>

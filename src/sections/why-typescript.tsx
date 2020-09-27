@@ -46,16 +46,16 @@ const WhyTypeScriptSection = () => {
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={12}>
-            <Typography textStyle="h2" color="white" textAlign="center">
+            <Typography textStyle="h2" color="white">
               Why TypeScript?
             </Typography>
-            <Typography textStyle="h2" color="white" textAlign="center">
+            <Typography textStyle="h2" color="white">
               Simply put - it&apos;s the future.
             </Typography>
           </GridColumn>
         </GridRow>
 
-        <GridRow mt="fifty">
+        <GridRow mt="fifty" withGutter>
           {CHECK_LIST_ITEMS.map((item, i) => (
             <GridColumn span={4} key={item.title}>
               <animated.div style={trail[i]}>

@@ -20,6 +20,7 @@ const theme = {
   colors: {
     green: `rgba(30,189,198,1)`,
     white: `rgba(255,255,255,1)`,
+    grey: `rgba(250,190,200,1)`,
     pink: 'rgba(255,99,146,1)',
     pinkDark: 'rgba(223,77,121,1)',
     black: 'rgba(47,46,46,1)',

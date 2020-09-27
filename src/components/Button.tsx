@@ -20,6 +20,11 @@ const ButtonVariants: {
     textColor: 'white',
     shadowColor: 'pinkDark',
   },
+  white: {
+    backgroundColor: 'white',
+    textColor: 'pink',
+    shadowColor: 'grey',
+  },
 };
 
 export interface ButtonProps {
@@ -57,6 +62,7 @@ const Button = ({
         ...outerContainerProps,
         position: 'relative',
         alignSelf: 'center',
+        zIndex: 2,
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

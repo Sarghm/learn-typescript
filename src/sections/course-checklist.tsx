@@ -58,14 +58,14 @@ const CourseChecklistSection = () => {
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={12}>
-            <Typography textStyle="h2" color="white" textAlign="center">
+            <Typography textStyle="h2" color="white">
               Is this course for me?
             </Typography>
           </GridColumn>
         </GridRow>
 
         <GridRow mt="fifty">
-          <GridColumn offset={1} span={5}>
+          <GridColumn span={6}>
             {CHECK_LIST_ITEMS.map((item, i) => (
               <animated.div
                 key={item.title}
@@ -84,7 +84,7 @@ const CourseChecklistSection = () => {
             ))}
           </GridColumn>
 
-          <GridColumn span={5}>
+          <GridColumn span={6}>
             <Typography textStyle="h1" color="white">
               An image will go here one day
             </Typography>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import {
   GridContainer,
   GridRow,
@@ -9,6 +9,8 @@ import { SectionContainer } from '../components/section-container';
 import { Testimonial, TestimonialProps } from '../components/testimonial';
 import { VisibleMarker } from '../components/visible-marker';
 import { Section } from '../consts/sections';
+import { useTrail, animated } from 'react-spring';
+import { DefaultAnimationConfigMediumNoBounce } from '../consts/animated';
 
 const TESTIMONIALS: TestimonialProps[] = [
   {
@@ -37,19 +39,37 @@ const TESTIMONIALS: TestimonialProps[] = [
 ];
 
 const TestimonialsSection = () => {
+  const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
+
+  const handleVisibilityChanged = useCallback(
+    (isVisible: boolean) => {
+      setIsAnimatedIn(isAnimatedIn || isVisible);
+    },
+    [isAnimatedIn]
+  );
+
+  const testimonialsSpring = useTrail(TESTIMONIALS.length, {
+    opacity: isAnimatedIn ? 1 : 0,
+    config: DefaultAnimationConfigMediumNoBounce,
+  });
 
   return (
     <SectionContainer flexGrow={1} backgroundColor="green">
-      <VisibleMarker id={Section.Testimonials} />
+      <VisibleMarker
+        id={Section.Testimonials}
+        onVisibilityChanged={handleVisibilityChanged}
+      />
       <GridContainer currentSize={currentSize}>
         <GridRow withGutter alignItems="flex-end" py="fifty">
-          {TESTIMONIALS.map((testimonial) => (
+          {TESTIMONIALS.map((testimonial, index) => (
             <GridColumn
               key={testimonial.author}
               span={12 / TESTIMONIALS.length}
             >
-              <Testimonial {...testimonial} textColor="white" />
+              <animated.div style={testimonialsSpring[index]}>
+                <Testimonial {...testimonial} textColor="white" />
+              </animated.div>
             </GridColumn>
           ))}
         </GridRow>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box } from './box';
 import { useSpring, animated } from 'react-spring';
-import { DefaultAnimationConfigFastNoBounce } from '../consts/animated';
+import { DefaultAnimationConfigFastBounce } from '../consts/animated';
 import { theme } from '../theme';
 
 interface CardProps {
@@ -15,7 +15,7 @@ const Card = ({ children }: CardProps) => {
     boxShadow: `0px 0px ${hovered ? 30 : 10}px rgba(47,46,46,0.${
       hovered ? 15 : 1
     })`,
-    config: DefaultAnimationConfigFastNoBounce,
+    config: DefaultAnimationConfigFastBounce,
   });
 
   return (

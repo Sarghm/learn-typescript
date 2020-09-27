@@ -17,7 +17,7 @@ const OfferSection = () => {
   const { currentSize } = useScreenDimensionsContext();
 
   return (
-    <SectionContainer flexGrow={1} backgroundColor="white" py="fifty">
+    <SectionContainer flexGrow={1} backgroundColor="white" py="oneHundred">
       <VisibleMarker id={Section.Offer} />
       <GridContainer currentSize={currentSize}>
         <GridRow>

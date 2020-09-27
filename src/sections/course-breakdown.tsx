@@ -44,7 +44,7 @@ const COURSE_SECTIONS: CourseSection[] = [
   },
 ];
 
-const CourseBreakdown = () => {
+const CourseBreakdownSection = () => {
   const { currentSize } = useScreenDimensionsContext();
 
   return (
@@ -104,4 +104,4 @@ const CourseBreakdown = () => {
   );
 };
 
-export { CourseBreakdown };
+export { CourseBreakdownSection };

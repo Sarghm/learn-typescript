@@ -30,7 +30,7 @@ const CHECK_LIST_ITEMS: CheckListItemProps[] = [
   },
 ];
 
-const CourseChecklist = () => {
+const CourseChecklistSection = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
@@ -92,11 +92,15 @@ const CourseChecklist = () => {
         </GridRow>
 
         <GridRow mt="fifty">
-          <GridColumn span={8} offset={2}>
-            <Typography textStyle="h2" color="white" textAlign="center">
-              If you answered &quot;yes&quot; to all of the above, then this
-              course is for you!
-            </Typography>
+          <GridColumn span={12}>
+            <Box justifyContent="center" flexGrow={1}>
+              <Box width="60%">
+                <Typography textStyle="h2" color="white" textAlign="center">
+                  If you answered &quot;yes&quot; to all of the above, then this
+                  course is for you!
+                </Typography>
+              </Box>
+            </Box>
           </GridColumn>
         </GridRow>
       </GridContainer>
@@ -104,4 +108,4 @@ const CourseChecklist = () => {
   );
 };
 
-export { CourseChecklist };
+export { CourseChecklistSection };

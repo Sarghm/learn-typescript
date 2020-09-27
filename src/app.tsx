@@ -4,9 +4,12 @@ import { theme } from './theme';
 import { ScreenDimensionsContextProvider } from './context/screen-dimensions';
 import { IntroductionSection } from './sections/introduction';
 import { AppHeader } from './components/app-header';
-import { CourseChecklist } from './sections/course-checklist';
-import { WhyTypeScript } from './sections/why-typescript';
-import { CourseBreakdown } from './sections/course-breakdown';
+import { CourseChecklistSection } from './sections/course-checklist';
+import { WhyTypeScriptSection } from './sections/why-typescript';
+import { CourseBreakdownSection } from './sections/course-breakdown';
+import { TestimonialsSection } from './sections/testimonials';
+import { OfferSection } from './sections/offer';
+import { PurchaseSection } from './sections/purchase';
 
 const App = () => {
   return (
@@ -14,9 +17,12 @@ const App = () => {
       <ScreenDimensionsContextProvider>
         <AppHeader />
         <IntroductionSection />
-        <CourseChecklist />
-        <WhyTypeScript />
-        <CourseBreakdown />
+        <CourseChecklistSection />
+        <WhyTypeScriptSection />
+        <CourseBreakdownSection />
+        <TestimonialsSection />
+        <OfferSection />
+        <PurchaseSection />
       </ScreenDimensionsContextProvider>
     </ThemeProvider>
   );

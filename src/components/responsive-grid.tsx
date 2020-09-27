@@ -155,7 +155,6 @@ const StyledGridColumn = styled(Box)<{
   flex-direction: column;
   flex-basis: ${(props) => (props.span / 12) * 100}%;
   padding-right: ${(props) => props.gutter}px;
-
   flex-shrink: 1;
 `;
 

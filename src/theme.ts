@@ -11,7 +11,7 @@ const theme = {
     twoHundred: 200,
   },
   grid: {
-    maxWidth: 1200,
+    maxWidth: 1080,
     breakpoints: [768, 998, 1200],
   },
   radii: {

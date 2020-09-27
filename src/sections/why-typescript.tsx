@@ -27,7 +27,7 @@ const CHECK_LIST_ITEMS: CheckListItemProps[] = [
   },
 ];
 
-const WhyTypeScript = () => {
+const WhyTypeScriptSection = () => {
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
 
@@ -74,4 +74,4 @@ const WhyTypeScript = () => {
   );
 };
 
-export { WhyTypeScript };
+export { WhyTypeScriptSection };

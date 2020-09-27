@@ -10,6 +10,7 @@ import { CourseBreakdownSection } from './sections/course-breakdown';
 import { TestimonialsSection } from './sections/testimonials';
 import { OfferSection } from './sections/offer';
 import { PurchaseSection } from './sections/purchase';
+import { AuthorIntroductionSection } from './sections/author-introduction';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <WhyTypeScriptSection />
         <CourseBreakdownSection />
         <TestimonialsSection />
+        <AuthorIntroductionSection />
         <OfferSection />
         <PurchaseSection />
       </ScreenDimensionsContextProvider>

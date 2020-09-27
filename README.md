@@ -4,7 +4,7 @@
 [X] Lay out "Who am I" section
 [X] Lay out "Get first 2 videos for free" section
 [X] Lay out "Ready to buy it" section
-[ ] Add animation behaviours when you scroll to certain bits
+[X] Add animation behaviours when you scroll to certain bits
 [ ] Circles in title section layout and animation
 
 [ ] Add wobbly section breaks

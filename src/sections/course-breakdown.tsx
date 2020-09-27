@@ -9,6 +9,8 @@ import {
 } from '../components/responsive-grid';
 import { Box } from '../components/box';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
+import { VisibleMarker } from '../components/visible-marker';
+import { Section } from '../consts/sections';
 
 interface CourseSection {
   title: string;
@@ -49,6 +51,7 @@ const CourseBreakdownSection = () => {
 
   return (
     <SectionContainer backgroundColor="white" py="oneHundred">
+      <VisibleMarker id={Section.CourseBreakdown} />
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={4}>

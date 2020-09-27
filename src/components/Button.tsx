@@ -31,12 +31,14 @@ export interface ButtonProps {
   variant?: keyof typeof ButtonVariants;
   textStyle?: keyof typeof theme.textStyles;
   children: string;
+  onPress?: () => void;
 }
 
 const Button = ({
   variant = 'default',
   children,
   textStyle = 'h3',
+  onPress,
 }: ButtonProps) => {
   const [active, setActive] = useState<boolean>(false);
   const [hovered, setHovered] = useState<boolean>(false);
@@ -68,6 +70,7 @@ const Button = ({
       onMouseLeave={() => setHovered(false)}
       onMouseDown={() => setActive(true)}
       onMouseUp={() => setActive(false)}
+      onClick={onPress}
     >
       <Box
         position="relative"

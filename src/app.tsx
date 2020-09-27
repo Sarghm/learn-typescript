@@ -11,20 +11,23 @@ import { TestimonialsSection } from './sections/testimonials';
 import { OfferSection } from './sections/offer';
 import { PurchaseSection } from './sections/purchase';
 import { AuthorIntroductionSection } from './sections/author-introduction';
+import { ScrollContextProvider } from './context/scroll';
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <ScreenDimensionsContextProvider>
-        <AppHeader />
-        <IntroductionSection />
-        <CourseChecklistSection />
-        <WhyTypeScriptSection />
-        <CourseBreakdownSection />
-        <TestimonialsSection />
-        <AuthorIntroductionSection />
-        <OfferSection />
-        <PurchaseSection />
+        <ScrollContextProvider>
+          <AppHeader />
+          <IntroductionSection />
+          <CourseChecklistSection />
+          <WhyTypeScriptSection />
+          <CourseBreakdownSection />
+          <TestimonialsSection />
+          <AuthorIntroductionSection />
+          <OfferSection />
+          <PurchaseSection />
+        </ScrollContextProvider>
       </ScreenDimensionsContextProvider>
     </ThemeProvider>
   );

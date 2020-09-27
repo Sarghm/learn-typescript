@@ -7,6 +7,8 @@ import {
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { SectionContainer } from '../components/section-container';
 import { Testimonial, TestimonialProps } from '../components/testimonial';
+import { VisibleMarker } from '../components/visible-marker';
+import { Section } from '../consts/sections';
 
 const TESTIMONIALS: TestimonialProps[] = [
   {
@@ -39,6 +41,7 @@ const TestimonialsSection = () => {
 
   return (
     <SectionContainer flexGrow={1} backgroundColor="green">
+      <VisibleMarker id={Section.Testimonials} />
       <GridContainer currentSize={currentSize}>
         <GridRow withGutter alignItems="flex-end" py="fifty">
           {TESTIMONIALS.map((testimonial) => (

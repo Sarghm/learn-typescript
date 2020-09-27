@@ -12,16 +12,21 @@ import { theme } from '../theme';
 import { VideoPlayer } from '../components/video-player';
 import { Button } from '../components/button';
 import { InfoPoint } from '../components/info-point';
+import { VisibleMarker } from '../components/visible-marker';
+import { Section } from '../consts/sections';
+import { useScrollContext } from '../context/scroll';
 
 const VIDEO_CONTAINER_ASPECT_RATIO = 0.56;
 const TEXT_CONTAINER_INNER_PADDING_BOTTOM = theme.space.oneHundred;
 
 const IntroductionSection = () => {
+  const { scrollToSection } = useScrollContext();
   const { currentSize } = useScreenDimensionsContext();
 
   return (
     <>
       <SectionContainer flexGrow={1} backgroundColor="green">
+        <VisibleMarker id={Section.Introduction} />
         <GridContainer currentSize={currentSize}>
           <GridRow>
             <GridColumn offset={2} span={8}>
@@ -63,7 +68,12 @@ const IntroductionSection = () => {
           </GridRow>
           <GridRow mt="twenty">
             <GridColumn offset={3} span={6}>
-              <Button textStyle="h3">Get the first section for free!</Button>
+              <Button
+                textStyle="h3"
+                onPress={() => scrollToSection(Section.Offer)}
+              >
+                Get the first section for free!
+              </Button>
             </GridColumn>
           </GridRow>
           <GridRow pt="fifty" pb="oneHundred" withGutter>

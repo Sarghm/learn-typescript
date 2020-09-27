@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { SectionContainer } from '../components/section-container';
 import {
   GridContainer,
@@ -14,6 +14,8 @@ import { Typography } from '../components/typography';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { useTrail, animated, useSprings } from 'react-spring';
 import { DefaultAnimationConfigMediumBounce } from '../consts/animated';
+import { VisibleMarker } from '../components/visible-marker';
+import { Section } from '../consts/sections';
 
 const CHECK_LIST_ITEMS: CheckListItemProps[] = [
   {
@@ -49,12 +51,19 @@ const CourseChecklistSection = () => {
     }))
   );
 
-  useEffect(() => {
-    setIsAnimatedIn(true);
-  }, []);
+  const handleVisibilityChanged = useCallback(
+    (isVisible: boolean) => {
+      setIsAnimatedIn(isAnimatedIn || isVisible);
+    },
+    [isAnimatedIn]
+  );
 
   return (
     <SectionContainer backgroundColor="black" py="oneHundred">
+      <VisibleMarker
+        id={Section.CourseChecklist}
+        onVisibilityChanged={handleVisibilityChanged}
+      />
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={12}>

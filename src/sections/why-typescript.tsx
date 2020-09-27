@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { SectionContainer } from '../components/section-container';
 import {
   GridContainer,
@@ -11,6 +11,8 @@ import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { useTrail, animated } from 'react-spring';
 import { DefaultAnimationConfigMediumBounce } from '../consts/animated';
 import { InfoPoint } from '../components/info-point';
+import { VisibleMarker } from '../components/visible-marker';
+import { Section } from '../consts/sections';
 
 const CHECK_LIST_ITEMS: CheckListItemProps[] = [
   {
@@ -37,12 +39,19 @@ const WhyTypeScriptSection = () => {
     config: DefaultAnimationConfigMediumBounce,
   });
 
-  useEffect(() => {
-    setIsAnimatedIn(true);
-  }, []);
+  const handleVisibilityChanged = useCallback(
+    (isVisible: boolean) => {
+      setIsAnimatedIn(isAnimatedIn || isVisible);
+    },
+    [isAnimatedIn]
+  );
 
   return (
     <SectionContainer backgroundColor="pink" py="oneHundred">
+      <VisibleMarker
+        id={Section.WhyTypeScript}
+        onVisibilityChanged={handleVisibilityChanged}
+      />
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={12}>

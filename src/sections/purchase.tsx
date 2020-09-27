@@ -9,12 +9,15 @@ import { SectionContainer } from '../components/section-container';
 import { Box } from '../components/box';
 import { Typography } from '../components/typography';
 import { Button } from '../components/button';
+import { VisibleMarker } from '../components/visible-marker';
+import { Section } from '../consts/sections';
 
 const PurchaseSection = () => {
   const { currentSize } = useScreenDimensionsContext();
 
   return (
     <SectionContainer flexGrow={1} backgroundColor="pink" py="oneHundred">
+      <VisibleMarker id={Section.Purchase} />
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={12}>

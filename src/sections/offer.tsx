@@ -10,12 +10,15 @@ import { Box } from '../components/box';
 import { Typography } from '../components/typography';
 import { TextInput } from '../components/text-input';
 import { Button } from '../components/button';
+import { VisibleMarker } from '../components/visible-marker';
+import { Section } from '../consts/sections';
 
 const OfferSection = () => {
   const { currentSize } = useScreenDimensionsContext();
 
   return (
     <SectionContainer flexGrow={1} backgroundColor="white" py="fifty">
+      <VisibleMarker id={Section.Offer} />
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={8} offset={2}>

@@ -8,6 +8,8 @@ import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { SectionContainer } from '../components/section-container';
 import { Box } from '../components/box';
 import { Typography } from '../components/typography';
+import { VisibleMarker } from '../components/visible-marker';
+import { Section } from '../consts/sections';
 
 const AUTHOR_AVATAR_SIZE = 180;
 
@@ -21,6 +23,7 @@ const AuthorIntroductionSection = () => {
 
   return (
     <SectionContainer flexGrow={1} backgroundColor="black">
+      <VisibleMarker id={Section.AuthorIntroduction} />
       <GridContainer currentSize={currentSize}>
         <GridRow py="oneHundred">
           <GridColumn offset={2} span={8}>

@@ -7,7 +7,7 @@
 [X] Add animation behaviours when you scroll to certain bits
 [ ] Circles in title section layout and animation
 
-[ ] Add wobbly section breaks
+[X] Add wobbly section breaks
 [ ] Build the checkbox component
 [ ] Mobile pass
 [ ] Add Ionicons / Heroicons

@@ -12,6 +12,7 @@ import { OfferSection } from './sections/offer';
 import { PurchaseSection } from './sections/purchase';
 import { AuthorIntroductionSection } from './sections/author-introduction';
 import { ScrollContextProvider } from './context/scroll';
+import { WobblyLine } from './components/wobbly-line';
 
 const App = () => {
   return (
@@ -20,12 +21,19 @@ const App = () => {
         <ScrollContextProvider>
           <AppHeader />
           <IntroductionSection />
+          <WobblyLine backgroundColor="white" foregroundColor="black" />
           <CourseChecklistSection />
+          <WobblyLine backgroundColor="black" foregroundColor="pink" />
           <WhyTypeScriptSection />
+          <WobblyLine backgroundColor="pink" foregroundColor="white" />
           <CourseBreakdownSection />
+          <WobblyLine backgroundColor="white" foregroundColor="green" />
           <TestimonialsSection />
+          <WobblyLine backgroundColor="green" foregroundColor="black" />
           <AuthorIntroductionSection />
+          <WobblyLine backgroundColor="black" foregroundColor="white" />
           <OfferSection />
+          <WobblyLine backgroundColor="white" foregroundColor="pink" />
           <PurchaseSection />
         </ScrollContextProvider>
       </ScreenDimensionsContextProvider>

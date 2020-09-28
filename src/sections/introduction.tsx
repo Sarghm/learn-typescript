@@ -17,8 +17,10 @@ import { Section } from '../consts/sections';
 import { useScrollContext } from '../context/scroll';
 import { useSpring, animated, useTrail } from 'react-spring';
 import { DefaultAnimationConfigFastBounce } from '../consts/animated';
+import { WobblyLine } from '../components/wobbly-line';
 
 const VIDEO_CONTAINER_ASPECT_RATIO = 0.56;
+const WOBBLY_LINE_HEIGHT = 90;
 const TEXT_CONTAINER_INNER_PADDING_BOTTOM = theme.space.oneHundred;
 
 const KEY_FEATURES = [
@@ -142,7 +144,14 @@ const IntroductionSection = () => {
           </GridRow>
         </GridContainer>
       </SectionContainer>
-      <SectionContainer mt={-TEXT_CONTAINER_INNER_PADDING_BOTTOM}>
+      <WobblyLine
+        backgroundColor="green"
+        foregroundColor="white"
+        height={WOBBLY_LINE_HEIGHT}
+      />
+      <SectionContainer
+        mt={-TEXT_CONTAINER_INNER_PADDING_BOTTOM - WOBBLY_LINE_HEIGHT}
+      >
         <GridContainer currentSize={currentSize}>
           <GridRow>
             <GridColumn offset={2} span={8}>

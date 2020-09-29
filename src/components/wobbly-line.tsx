@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { DefaultTheme } from 'styled-components';
 import { theme } from '../theme';
 import { Box } from './box';
 
-interface WobblyLineProps {
+export interface WobblyLineProps {
   backgroundColor?: keyof DefaultTheme['colors'];
   foregroundColor?: keyof DefaultTheme['colors'];
   height?: number;
+  customWidthPercentage?: number;
 }
 
 const PATHS = [
@@ -20,19 +21,33 @@ const WobblyLine = ({
   backgroundColor = 'green',
   foregroundColor = 'white',
   height = 90,
+  customWidthPercentage,
 }: WobblyLineProps) => {
+  const path = useMemo(
+    () => PATHS[Math.floor(Math.random() * PATHS.length)],
+    []
+  );
+
   return (
-    <Box backgroundColor={backgroundColor} flexGrow={1}>
+    <Box
+      backgroundColor={backgroundColor}
+      flexGrow={1}
+      style={
+        customWidthPercentage
+          ? {
+              width: `${customWidthPercentage}%`,
+              transform: `translateX(${-100 / customWidthPercentage}%)`,
+            }
+          : {}
+      }
+    >
       <svg
         preserveAspectRatio="none"
         width="100%"
         height={height}
         viewBox="0 0 800 150"
       >
-        <path
-          d={PATHS[Math.floor(Math.random() * PATHS.length)]}
-          fill={theme.colors[foregroundColor]}
-        ></path>
+        <path d={path} fill={theme.colors[foregroundColor]}></path>
       </svg>
     </Box>
   );

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Box } from '../components/box';
 import { Typography } from '../components/typography';
 import {
@@ -8,7 +8,6 @@ import {
 } from '../components/responsive-grid';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { SectionContainer } from '../components/section-container';
-import { theme } from '../theme';
 import { VideoPlayer } from '../components/video-player';
 import { Button } from '../components/button';
 import { InfoPoint } from '../components/info-point';
@@ -18,10 +17,12 @@ import { useScrollContext } from '../context/scroll';
 import { useSpring, animated, useTrail } from 'react-spring';
 import { DefaultAnimationConfigFastBounce } from '../consts/animated';
 import { WobblyLine } from '../components/wobbly-line';
+import { Circle } from '../components/circle';
+import { responsiveValue } from '../utils/dimensions';
+import { theme } from '../theme';
 
 const VIDEO_CONTAINER_ASPECT_RATIO = 0.56;
 const WOBBLY_LINE_HEIGHT = 90;
-const TEXT_CONTAINER_INNER_PADDING_BOTTOM = theme.space.oneHundred;
 
 const KEY_FEATURES = [
   {
@@ -42,6 +43,10 @@ const IntroductionSection = () => {
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { scrollToSection } = useScrollContext();
   const { currentSize } = useScreenDimensionsContext();
+  const textContainerInnerPaddingY = useMemo(
+    () => responsiveValue(currentSize, 'fifty', 'oneHundred'),
+    [currentSize]
+  );
 
   const handleVisibilityChanged = useCallback(
     (isVisible: boolean) => {
@@ -108,29 +113,53 @@ const IntroductionSection = () => {
     config: DefaultAnimationConfigFastBounce,
   });
 
+  const circles = useMemo(() => {
+    if (currentSize !== 'xs')
+      return (
+        <>
+          <Circle size={1300} borderWidth={60} color="white-twenty" />
+          <Circle size={1000} borderWidth={80} color="white-twenty" />
+          <Circle size={600} borderWidth={120} color="white-twenty" />
+        </>
+      );
+    return null;
+  }, [currentSize]);
+
   return (
     <>
-      <SectionContainer flexGrow={1} backgroundColor="green">
+      <SectionContainer flexGrow={1} backgroundColor="green" zIndex={1}>
+        {circles}
         <VisibleMarker
           id={Section.Introduction}
           onVisibilityChanged={handleVisibilityChanged}
         />
         <GridContainer currentSize={currentSize}>
           <GridRow>
-            <GridColumn offset={2} span={8}>
-              <Box
-                flexDirection="column"
-                py={TEXT_CONTAINER_INNER_PADDING_BOTTOM}
-              >
+            <GridColumn
+              offset={responsiveValue(currentSize, 0, 2)}
+              span={responsiveValue(currentSize, 12, 8)}
+            >
+              <Box flexDirection="column" py={textContainerInnerPaddingY}>
                 <animated.div style={titleSpring}>
-                  <Typography textStyle="h1" color="white" textAlign="center">
+                  <Typography
+                    textStyle={responsiveValue(currentSize, 'h2', 'h1')}
+                    color="white"
+                    textAlign="center"
+                  >
                     JavaScript to TypeScript
                   </Typography>
                 </animated.div>
                 <animated.div style={subtitleSpring}>
-                  <Box mt="twenty" px="oneHundred">
+                  <Box
+                    mt={responsiveValue(currentSize, 'ten', 'twenty')}
+                    px={textContainerInnerPaddingY}
+                  >
                     <Typography
-                      textStyle="h3Light"
+                      textStyle={responsiveValue(
+                        currentSize,
+                        'h4Light',
+                        'h3Light'
+                      )}
                       color="white"
                       textAlign="center"
                     >
@@ -147,14 +176,19 @@ const IntroductionSection = () => {
       <WobblyLine
         backgroundColor="green"
         foregroundColor="white"
-        height={WOBBLY_LINE_HEIGHT}
+        customWidthPercentage={responsiveValue(currentSize, 200, undefined)}
       />
+
       <SectionContainer
-        mt={-TEXT_CONTAINER_INNER_PADDING_BOTTOM - WOBBLY_LINE_HEIGHT}
+        mt={-theme.space[textContainerInnerPaddingY] - WOBBLY_LINE_HEIGHT}
+        zIndex={2}
       >
         <GridContainer currentSize={currentSize}>
           <GridRow>
-            <GridColumn offset={2} span={8}>
+            <GridColumn
+              offset={responsiveValue(currentSize, 0, 2)}
+              span={responsiveValue(currentSize, 12, 8)}
+            >
               <animated.div
                 style={{ justifyContent: 'center', ...videoSpring }}
               >
@@ -168,20 +202,36 @@ const IntroductionSection = () => {
             </GridColumn>
           </GridRow>
           <GridRow mt="twenty">
-            <GridColumn offset={3} span={6}>
+            <GridColumn
+              offset={responsiveValue(currentSize, 1, 3)}
+              span={responsiveValue(currentSize, 10, 6)}
+            >
               <animated.div style={buttonSpring}>
                 <Button
                   textStyle="h3"
                   onPress={() => scrollToSection(Section.Offer)}
                 >
-                  Get the first section for free!
+                  Get the first part for free!
                 </Button>
               </animated.div>
             </GridColumn>
           </GridRow>
-          <GridRow pt="fifty" pb="oneHundred" withGutter>
+          <GridRow
+            pt="fifty"
+            withGutter={responsiveValue(currentSize, true, false)}
+            pb={responsiveValue(currentSize, undefined, 'oneHundred')}
+            flexDirection={responsiveValue(currentSize, 'column', 'row')}
+          >
             {KEY_FEATURES.map((keyFeature, index) => (
-              <GridColumn span={4} key={keyFeature.title}>
+              <GridColumn
+                key={keyFeature.title}
+                span={responsiveValue(currentSize, 12, 4)}
+                mt={responsiveValue(
+                  currentSize,
+                  index === 0 ? undefined : 'twenty',
+                  undefined
+                )}
+              >
                 <animated.div style={keyFeaturesSpring[index]}>
                   <InfoPoint {...keyFeature} />
                 </animated.div>

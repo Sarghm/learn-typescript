@@ -14,7 +14,7 @@ export const DEFAULT_XS_GRID_GUTTER = 16;
 export const DEFAULT_SM_GRID_GUTTER = 20;
 export const DEFAULT_MD_GRID_GUTTER = 40;
 
-export const DEFAULT_XS_GRID_MARGIN = 0;
+export const DEFAULT_XS_GRID_MARGIN = 20;
 export const DEFAULT_SM_GRID_MARGIN = 20;
 export const DEFAULT_MD_GRID_MARGIN = 40;
 
@@ -158,18 +158,29 @@ const StyledGridColumn = styled(Box)<{
   flex-shrink: 1;
 `;
 
-const GridColumn = ({ children, span = 12, offset = 0 }: GridColumnProps) => {
+const GridColumn = ({
+  children,
+  span = 12,
+  offset = 0,
+  ...rest
+}: GridColumnProps) => {
   const { gridColumns, gridGutter } = useGridContext();
   const { withGutter } = useGridRowContext();
   return (
     <>
       {offset ? (
-        <StyledGridColumn span={offset} gutter={0} columns={gridColumns} />
+        <StyledGridColumn
+          span={offset}
+          gutter={0}
+          columns={gridColumns}
+          {...rest}
+        />
       ) : null}
       <StyledGridColumn
         span={span}
         columns={gridColumns}
         gutter={withGutter ? gridGutter : 0}
+        {...rest}
       >
         {children}
       </StyledGridColumn>

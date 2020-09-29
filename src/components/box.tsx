@@ -45,6 +45,7 @@ const Box = styled.div<BoxProps>(
 
 Box.defaultProps = {
   display: 'flex',
+  position: 'relative',
 };
 
 export { Box };

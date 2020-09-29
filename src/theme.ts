@@ -20,6 +20,8 @@ const theme = {
   colors: {
     green: `rgba(30,189,198,1)`,
     white: `rgba(255,255,255,1)`,
+    'white-ten': `rgba(255,255,255,0.1)`,
+    'white-twenty': `rgba(255,255,255,0.2)`,
     grey: `rgba(250,190,200,1)`,
     pink: 'rgba(255,99,146,1)',
     pinkDark: 'rgba(223,77,121,1)',
@@ -63,6 +65,13 @@ const theme = {
     h4: {
       fontFamily: 'Sen, sans-serif',
       fontWeight: 800,
+      fontSize: '18px',
+      lineHeight: '27px',
+      letterSpacing: '-1px',
+    },
+    h4Light: {
+      fontFamily: 'Sen, sans-serif',
+      fontWeight: 400,
       fontSize: '18px',
       lineHeight: '27px',
       letterSpacing: '-1px',

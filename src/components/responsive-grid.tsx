@@ -16,7 +16,7 @@ export const DEFAULT_MD_GRID_GUTTER = 40;
 
 export const DEFAULT_XS_GRID_MARGIN = 20;
 export const DEFAULT_SM_GRID_MARGIN = 20;
-export const DEFAULT_MD_GRID_MARGIN = 0;
+export const DEFAULT_MD_GRID_MARGIN = 20;
 
 interface GridContainerProps extends ResponsiveProps {
   children: React.ReactNode;

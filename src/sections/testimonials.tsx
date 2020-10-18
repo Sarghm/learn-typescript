@@ -12,6 +12,7 @@ import { Section } from '../consts/sections';
 import { useTrail, animated } from 'react-spring';
 import { DefaultAnimationConfigMediumNoBounce } from '../consts/animated';
 import { Box } from '../components/box';
+import { responsiveValue } from '../utils/dimensions';
 
 const TESTIMONIALS: TestimonialProps[] = [
   {
@@ -58,9 +59,9 @@ const TESTIMONIALS: TestimonialProps[] = [
 ];
 
 const TestimonialsSection = () => {
-  const maxItemsPerRow = 3;
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
+  const maxItemsPerRow = responsiveValue(currentSize, 2, 3);
 
   const TESTIMONIALS_ITEM_ROWS = useMemo(() => {
     const numberOfRows = Math.ceil(TESTIMONIALS.length / maxItemsPerRow);
@@ -72,7 +73,7 @@ const TestimonialsSection = () => {
           idx * maxItemsPerRow + maxItemsPerRow
         )
       );
-  }, []);
+  }, [maxItemsPerRow]);
 
   const handleVisibilityChanged = useCallback(
     (isVisible: boolean) => {

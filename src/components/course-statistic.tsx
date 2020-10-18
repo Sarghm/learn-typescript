@@ -11,7 +11,12 @@ const CourseStatistic = ({ title, icon, ...rest }: CourseStatisticProps) => {
   return (
     <Box alignItems="center" flexDirection="row" {...rest}>
       <Box mr="ten">{icon}</Box>
-      <Typography textStyle="h4Light" color="black" textAlign="center">
+      <Typography
+        textStyle="h4Light"
+        color="black"
+        textAlign="center"
+        style={{ width: 'max-content' }}
+      >
         {title}
       </Typography>
     </Box>

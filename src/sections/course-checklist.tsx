@@ -16,6 +16,7 @@ import { useTrail, animated, useSprings } from 'react-spring';
 import { DefaultAnimationConfigFastNoBounce } from '../consts/animated';
 import { VisibleMarker } from '../components/visible-marker';
 import { Section } from '../consts/sections';
+import { responsiveValue } from '../utils/dimensions';
 
 const CHECK_LIST_ITEMS: CheckListItemProps[] = [
   {
@@ -58,7 +59,10 @@ const CourseChecklistSection = () => {
   );
 
   return (
-    <SectionContainer backgroundColor="black" py="oneHundred">
+    <SectionContainer
+      backgroundColor="black"
+      py={responsiveValue(currentSize, 'thirty', 'oneHundred')}
+    >
       <VisibleMarker
         id={Section.CourseChecklist}
         onVisibilityChanged={handleVisibilityChanged}
@@ -66,8 +70,20 @@ const CourseChecklistSection = () => {
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={12}>
-            <Box flexDirection="row" alignItems="center">
-              <Typography textStyle="h2" color="white">
+            <Box
+              flexDirection="row"
+              alignItems="center"
+              justifyContent={responsiveValue(
+                currentSize,
+                'center',
+                'flex-start'
+              )}
+            >
+              <Typography
+                textStyle="h2"
+                color="white"
+                textAlign={responsiveValue(currentSize, 'center', 'left')}
+              >
                 Is this course for you?
               </Typography>
             </Box>
@@ -75,7 +91,7 @@ const CourseChecklistSection = () => {
         </GridRow>
 
         <GridRow mt="fifty">
-          <GridColumn span={6}>
+          <GridColumn span={responsiveValue(currentSize, 12, 6)}>
             {CHECK_LIST_ITEMS.map((item, i) => (
               <animated.div
                 key={item.title}
@@ -93,12 +109,13 @@ const CourseChecklistSection = () => {
               </animated.div>
             ))}
           </GridColumn>
-
-          <GridColumn span={6}>
-            <Typography textStyle="h1" color="white">
-              An image will go here one day
-            </Typography>
-          </GridColumn>
+          {currentSize !== 'xs' ? (
+            <GridColumn span={6}>
+              <Typography textStyle="h1" color="white">
+                An image will go here one day
+              </Typography>
+            </GridColumn>
+          ) : null}
         </GridRow>
       </GridContainer>
     </SectionContainer>

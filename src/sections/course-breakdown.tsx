@@ -22,38 +22,53 @@ import {
 } from 'heroicons-react';
 import { DEFAULT_ICON_SIZE_SM } from '../consts/icons';
 import { theme } from '../theme';
+import { CourseBreakdownItem } from '../components/course-breakdown-item';
+
+export interface CourseSectionPoint {
+  title: string;
+  length: string;
+}
 
 interface CourseSection {
   title: string;
   length: string;
-  points: string[];
-  thumbnailImageURL: string;
+  points: CourseSectionPoint[];
 }
 
 const COURSE_SECTIONS: CourseSection[] = [
   {
-    title: 'Arrays',
-    length: 'About 15 minutes',
-    points: ['Hello there', 'Hello there', 'Hello there', 'Hello there'],
-    thumbnailImageURL: 'https://www.google.com',
+    title: 'Getting Started',
+    length: '~ 15 minutes',
+    points: [
+      { title: 'What is TypeScript?', length: '02:30' },
+      { title: 'Introduction to the course', length: '01:50' },
+      { title: 'Setting up your first TypeScript project', length: '09:35' },
+    ],
   },
   {
-    title: 'Arrays',
-    length: 'About 15 minutes',
-    points: ['Hello there', 'Hello there', 'Hello there', 'Hello there'],
-    thumbnailImageURL: 'https://www.google.com',
+    title: 'Learning TypeScript',
+    length: '~ 90 minutes',
+    points: [
+      { title: 'Basic Types', length: '07:23' },
+      { title: 'Type Inference', length: '05:34' },
+      { title: 'Union Types', length: '09:22' },
+      { title: 'Arrays & Tuples', length: '09:38' },
+      { title: 'Any & Unknown', length: '10:00' },
+      { title: 'Undefined & Null', length: '04:29' },
+      { title: 'Enums', length: '07:24' },
+      { title: 'Interfaces', length: '12:45' },
+      { title: 'Functions', length: '08:45' },
+      { title: 'Types', length: '07:39' },
+    ],
   },
   {
-    title: 'Arrays',
+    title: 'Putting it all together',
     length: 'About 15 minutes',
-    points: ['Hello there', 'Hello there', 'Hello there', 'Hello there'],
-    thumbnailImageURL: 'https://www.google.com',
-  },
-  {
-    title: 'Arrays',
-    length: 'About 15 minutes',
-    points: ['Hello there', 'Hello there', 'Hello there', 'Hello there'],
-    thumbnailImageURL: 'https://www.google.co.uk',
+    points: [
+      { title: 'Putting Everything Into Practice Part 1', length: '07:25' },
+      { title: 'Putting Everything Into Practice Part 2', length: '08:53' },
+      { title: 'Putting Everything Into Practice Part 3', length: '07:53' },
+    ],
   },
 ];
 
@@ -107,7 +122,7 @@ const CourseBreakdownSection = () => {
             </Box>
             <Box flexDirection="row" justifyContent="center" mt="ten">
               <CourseStatistic
-                title="2K Video Quality"
+                title="2K Super HQ Video Quality"
                 mr="twenty"
                 icon={
                   <VideoCameraOutline
@@ -150,15 +165,17 @@ const CourseBreakdownSection = () => {
                             {length}
                           </Typography>
                         </Box>
-                        <ul>
-                          {points.map((point) => (
-                            <li key={point.slice(10)}>
-                              <Typography textStyle="body" color="black">
-                                {point}
-                              </Typography>
-                            </li>
-                          ))}
-                        </ul>
+                        <Box mt="fifteen">
+                          <ul>
+                            {points.map((point, idx) => (
+                              <CourseBreakdownItem
+                                key={point.title}
+                                point={point}
+                                mt={idx === 0 ? 'zero' : 'ten'}
+                              />
+                            ))}
+                          </ul>
+                        </Box>
                       </Box>
                     </Card>
                   </Box>

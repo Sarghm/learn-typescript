@@ -14,8 +14,8 @@ import { Section } from '../consts/sections';
 const AUTHOR_AVATAR_SIZE = 180;
 
 const AUTHOR_DETAILS = {
-  introduction: `My name is Sam Piggott, and I love teaching courses about TypeScript! And literally nothing else.`,
-  avatarImageURL: 'https://api.adorable.io/avatars/102/abott@adorable.png',
+  introduction: ``,
+  avatarImageURL: '/images/sam.jpg',
 };
 
 const AuthorIntroductionSection = () => {
@@ -43,10 +43,25 @@ const AuthorIntroductionSection = () => {
                 <Typography textStyle="h3" color="white">
                   An introduction to the teacher
                 </Typography>
-                <Box mt="ten">
-                  <Typography textStyle="body" color="white">
-                    {AUTHOR_DETAILS.introduction}
-                  </Typography>
+                <Box mt="ten" flexDirection="column">
+                  <Box>
+                    <Typography textStyle="body" color="white">
+                      My name&apos;s Sam, and I&apos;ll be your guide through
+                      your TypeScript journey! I&apos;m an award-winning
+                      software engineeer with almost a decade&apos;s worth of
+                      experience in the field, and over a half a million App
+                      Store app downloads to my name.
+                    </Typography>
+                  </Box>
+                  <Box mt="ten">
+                    <Typography textStyle="body" color="white">
+                      It&apos;s safe to say I&apos;ve tried my hand at plenty of
+                      different programming languages along the way. Out of all
+                      of them, TypeScript has been the one that&apos;s excited
+                      me more than any other - and that&apos;s the reason I
+                      wrote this course.
+                    </Typography>
+                  </Box>
                 </Box>
               </Box>
             </Box>

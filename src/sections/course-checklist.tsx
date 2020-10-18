@@ -13,22 +13,22 @@ import {
 import { Typography } from '../components/typography';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { useTrail, animated, useSprings } from 'react-spring';
-import { DefaultAnimationConfigMediumBounce } from '../consts/animated';
+import { DefaultAnimationConfigFastNoBounce } from '../consts/animated';
 import { VisibleMarker } from '../components/visible-marker';
 import { Section } from '../consts/sections';
 
 const CHECK_LIST_ITEMS: CheckListItemProps[] = [
   {
-    title: 'I already have some JavaScript experience',
-    children: `This course has been written with the assumption that you already have some JavaScript experience. You don't have to have much - as long as you have an understanding of variables and functions, you should be totally fine!`,
+    title: 'You already have some JavaScript experience',
+    children: `This course is written with the expectation that you'll have at least a basic understanding of JavaScript. You don't have to have much - as long as you have an understanding of variables and functions, you should be ready to learn! If you're finding the course too difficult, however, drop us an email and we'll issue a refund, no questions asked.`,
   },
   {
-    title: 'I already have some JavaScript experience',
-    children: `This course has been written with the assumption that you already have some JavaScript experience. You don't have to have much - as long as you have an understanding of variables and functions, you should be totally fine!`,
+    title: "You haven't used TypeScript yet",
+    children: `This course has been written to teach you the fundamentals of TypeScript, so you can start using it straightaway. If you've never used TypeScript before, then this course is for you!`,
   },
   {
-    title: 'I already have some JavaScript experience',
-    children: `This course has been written with the assumption that you already have some JavaScript experience. You don't have to have much - as long as you have an understanding of variables and functions, you should be totally fine!`,
+    title: 'You are a frontend, backend, or full-stack engineer',
+    children: `The course is totally agnostic to practices - whether you're a frontend, backend or full-stack engineer, you'll be able to use your learnings from this course and apply it to your own practice!`,
   },
 ];
 
@@ -40,7 +40,7 @@ const CourseChecklistSection = () => {
   const trail = useTrail(CHECK_LIST_ITEMS.length, {
     opacity: isAnimatedIn ? 1 : 0,
     transform: `translateY(${isAnimatedIn ? 0 : 100}px)`,
-    config: DefaultAnimationConfigMediumBounce,
+    config: DefaultAnimationConfigFastNoBounce,
   });
 
   const springs = useSprings(
@@ -68,7 +68,7 @@ const CourseChecklistSection = () => {
           <GridColumn span={12}>
             <Box flexDirection="row" alignItems="center">
               <Typography textStyle="h2" color="white">
-                Is this course for me?
+                Is this course for you?
               </Typography>
             </Box>
           </GridColumn>
@@ -98,19 +98,6 @@ const CourseChecklistSection = () => {
             <Typography textStyle="h1" color="white">
               An image will go here one day
             </Typography>
-          </GridColumn>
-        </GridRow>
-
-        <GridRow mt="fifty">
-          <GridColumn span={12}>
-            <Box justifyContent="center" flexGrow={1}>
-              <Box width="60%">
-                <Typography textStyle="h2" color="white" textAlign="center">
-                  If you answered &quot;yes&quot; to all of the above, then this
-                  course is for you!
-                </Typography>
-              </Box>
-            </Box>
           </GridColumn>
         </GridRow>
       </GridContainer>

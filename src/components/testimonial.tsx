@@ -43,15 +43,15 @@ const Testimonial = ({
           backgroundColor="white"
           width={AVATAR_IMAGE_SIZE}
           height={AVATAR_IMAGE_SIZE}
-          style={{ borderRadius: AVATAR_IMAGE_SIZE / 2 }}
+          style={{ borderRadius: AVATAR_IMAGE_SIZE }}
           mr="ten"
         />
-        <Box flexDirection="column" mt="ten">
-          <Typography textStyle="h4" color={textColor}>
+        <Box flexDirection="column" mt="ten" width="80%">
+          <Typography textStyle="h4Light" color={textColor}>
             {author}
           </Typography>
           {authorDetails ? (
-            <Typography textStyle="body" color={textColor} opacity={0.5}>
+            <Typography textStyle="body" color={textColor} opacity={0.7}>
               {authorDetails}
             </Typography>
           ) : null}

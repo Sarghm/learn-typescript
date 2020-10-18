@@ -28,8 +28,8 @@ const PurchasePrompt = ({ visible = false }: PurchasePromptProps) => {
     >
       <Box
         p="twenty"
-        backgroundColor="black"
-        justifyContent="flex-end"
+        backgroundColor="green"
+        justifyContent="center"
         alignItems="center"
       >
         <Box mr="ten">
@@ -37,7 +37,7 @@ const PurchasePrompt = ({ visible = false }: PurchasePromptProps) => {
             Buy now for £10
           </Typography>
         </Box>
-        <Button variant="default" textStyle="h4">
+        <Button variant="white" textStyle="h4">
           Buy Now
         </Button>
       </Box>

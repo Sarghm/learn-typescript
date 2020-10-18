@@ -13,7 +13,6 @@ import { InfoPoint, InfoPointProps } from '../components/info-point';
 import { VisibleMarker } from '../components/visible-marker';
 import { Section } from '../consts/sections';
 import { Box } from '../components/box';
-import { QuestionMarkCircleOutline } from 'heroicons-react';
 import { DEFAULT_ICON_SIZE } from '../consts/icons';
 import { theme } from '../theme';
 import {
@@ -94,13 +93,6 @@ const WhyTypeScriptSection = () => {
         <GridRow>
           <GridColumn span={12}>
             <Box flexDirection="row" alignItems="center">
-              <Box>
-                <QuestionMarkCircleOutline
-                  size={DEFAULT_ICON_SIZE}
-                  color={theme.colors.white}
-                  style={{ marginRight: 15 }}
-                />
-              </Box>
               <Box flexDirection="column">
                 <Typography textStyle="h2" color="white">
                   Why TypeScript?

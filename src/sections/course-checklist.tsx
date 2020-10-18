@@ -16,9 +16,6 @@ import { useTrail, animated, useSprings } from 'react-spring';
 import { DefaultAnimationConfigMediumBounce } from '../consts/animated';
 import { VisibleMarker } from '../components/visible-marker';
 import { Section } from '../consts/sections';
-import { QuestionMarkCircleOutline } from 'heroicons-react';
-import { theme } from '../theme';
-import { DEFAULT_ICON_SIZE } from '../consts/icons';
 
 const CHECK_LIST_ITEMS: CheckListItemProps[] = [
   {
@@ -49,7 +46,6 @@ const CourseChecklistSection = () => {
   const springs = useSprings(
     CHECK_LIST_ITEMS.length,
     CHECK_LIST_ITEMS.map((el, idx) => ({
-      transform: hoveredIndex === idx ? `scale(1,1)` : `scale(0.85,0.85)`,
       opacity: hoveredIndex === null ? 1 : hoveredIndex === idx ? 1.0 : 0.2,
     }))
   );
@@ -71,11 +67,6 @@ const CourseChecklistSection = () => {
         <GridRow>
           <GridColumn span={12}>
             <Box flexDirection="row" alignItems="center">
-              <QuestionMarkCircleOutline
-                size={DEFAULT_ICON_SIZE}
-                color={theme.colors.white}
-                style={{ marginRight: 15 }}
-              />
               <Typography textStyle="h2" color="white">
                 Is this course for me?
               </Typography>

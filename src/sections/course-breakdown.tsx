@@ -13,6 +13,15 @@ import { VisibleMarker } from '../components/visible-marker';
 import { Section } from '../consts/sections';
 import { useTrail, animated } from 'react-spring';
 import { DefaultAnimationConfigFastBounce } from '../consts/animated';
+import { CourseStatistic } from '../components/course-statistic';
+import {
+  ClockOutline,
+  CloudDownloadOutline,
+  VideoCameraOutline,
+  ViewListOutline,
+} from 'heroicons-react';
+import { DEFAULT_ICON_SIZE_SM } from '../consts/icons';
+import { theme } from '../theme';
 
 interface CourseSection {
   title: string;
@@ -73,20 +82,51 @@ const CourseBreakdownSection = () => {
       />
       <GridContainer currentSize={currentSize}>
         <GridRow>
-          <GridColumn span={4}>
-            <Typography textStyle="h2" color="black" textAlign="center">
-              150 Hours
-            </Typography>
-          </GridColumn>
-          <GridColumn span={4}>
-            <Typography textStyle="h2" color="black" textAlign="center">
-              Another Statistic
-            </Typography>
-          </GridColumn>
-          <GridColumn span={4}>
-            <Typography textStyle="h2" color="black" textAlign="center">
-              80 videos
-            </Typography>
+          <GridColumn span={12}>
+            <Box flexDirection="row" justifyContent="center">
+              <CourseStatistic
+                title="16 Videos"
+                mr="twenty"
+                icon={
+                  <ViewListOutline
+                    size={DEFAULT_ICON_SIZE_SM}
+                    color={theme.colors.pink}
+                  />
+                }
+              />
+              <CourseStatistic
+                title="2 hours"
+                mr="twenty"
+                icon={
+                  <ClockOutline
+                    size={DEFAULT_ICON_SIZE_SM}
+                    color={theme.colors.pink}
+                  />
+                }
+              />
+            </Box>
+            <Box flexDirection="row" justifyContent="center" mt="ten">
+              <CourseStatistic
+                title="2K Video Quality"
+                mr="twenty"
+                icon={
+                  <VideoCameraOutline
+                    size={DEFAULT_ICON_SIZE_SM}
+                    color={theme.colors.pink}
+                  />
+                }
+              />
+              <CourseStatistic
+                title="Pay once, yours forever"
+                mr="twenty"
+                icon={
+                  <CloudDownloadOutline
+                    size={DEFAULT_ICON_SIZE_SM}
+                    color={theme.colors.pink}
+                  />
+                }
+              />
+            </Box>
           </GridColumn>
         </GridRow>
 

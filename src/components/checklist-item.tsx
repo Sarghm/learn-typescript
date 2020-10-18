@@ -16,7 +16,7 @@ const CheckListItem = ({ title, children }: CheckListItemProps) => {
     <Box flexDirection="column">
       <Box flexDirection="row" alignItems="center">
         <CheckCircleOutline
-          color={theme.colors.green}
+          color={theme.colors.pink}
           size={CHECK_MARK_SIZE}
           style={{ marginRight: 15 }}
         />

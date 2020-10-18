@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import {
   GridContainer,
   GridRow,
@@ -11,36 +11,68 @@ import { VisibleMarker } from '../components/visible-marker';
 import { Section } from '../consts/sections';
 import { useTrail, animated } from 'react-spring';
 import { DefaultAnimationConfigMediumNoBounce } from '../consts/animated';
+import { Box } from '../components/box';
 
 const TESTIMONIALS: TestimonialProps[] = [
   {
-    author: 'Sam Piggott',
-    authorDetails: 'Software Engineer at Planes',
+    author: 'Anisah Osman Britton',
+    authorDetails: 'CTO at Vinokilo & CEO at 23 Code Street',
     testimonial: 'What an excellent course!',
-    authorAvatarImageUrl:
-      'https://api.adorable.io/avatars/102/abott@adorable.png',
+    authorAvatarImageUrl: '/images/sam.jpg',
   },
   {
-    author: 'Sam Piggott',
-    authorDetails: 'Software Engineer at Planes',
+    author: 'Ella Henry',
+    authorDetails: 'Full-stack Software Engineer',
     testimonial:
       'What an excellent course! What an excellent course! What an excellent course!',
-    authorAvatarImageUrl:
-      'https://api.adorable.io/avatars/102/abott@adorable.png',
+    authorAvatarImageUrl: '/images/sam.jpg',
   },
   {
-    author: 'Sam Piggott',
-    authorDetails: 'Software Engineer at Planes',
+    author: 'Jinjin Wang',
+    authorDetails: 'Full-stack Software Engineer',
     testimonial:
       'What an excellent course! What an excellent course! What an excellent course! What an excellent course! What an excellent course!',
-    authorAvatarImageUrl:
-      'https://api.adorable.io/avatars/102/abott@adorable.png',
+    authorAvatarImageUrl: '/images/sam.jpg',
+  },
+  {
+    author: 'Alison Yoon',
+    authorDetails: 'Full-stack Software Engineer',
+    testimonial:
+      'What an excellent course! What an excellent course! What an excellent course! What an excellent course! What an excellent course!',
+    authorAvatarImageUrl: '/images/sam.jpg',
+  },
+  {
+    author: 'Tony McShane',
+    authorDetails: 'Full-stack Software Engineer',
+    testimonial:
+      'What an excellent course! What an excellent course! What an excellent course! What an excellent course! What an excellent course!',
+    authorAvatarImageUrl: '/images/sam.jpg',
+  },
+  {
+    author: 'Luke Gosling',
+    authorDetails: 'Full-stack Software Engineer at Manchester City Airport',
+    testimonial:
+      'What an excellent course! What an excellent course! What an excellent course! What an excellent course! What an excellent course!',
+    authorAvatarImageUrl: '/images/sam.jpg',
   },
 ];
 
 const TestimonialsSection = () => {
+  const maxItemsPerRow = 3;
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
+
+  const TESTIMONIALS_ITEM_ROWS = useMemo(() => {
+    const numberOfRows = Math.ceil(TESTIMONIALS.length / maxItemsPerRow);
+    return new Array(numberOfRows)
+      .fill(0)
+      .map((row, idx) =>
+        [...TESTIMONIALS].slice(
+          idx * maxItemsPerRow,
+          idx * maxItemsPerRow + maxItemsPerRow
+        )
+      );
+  }, []);
 
   const handleVisibilityChanged = useCallback(
     (isVisible: boolean) => {
@@ -61,18 +93,19 @@ const TestimonialsSection = () => {
         onVisibilityChanged={handleVisibilityChanged}
       />
       <GridContainer currentSize={currentSize}>
-        <GridRow withGutter alignItems="flex-end" py="fifty">
-          {TESTIMONIALS.map((testimonial, index) => (
-            <GridColumn
-              key={testimonial.author}
-              span={12 / TESTIMONIALS.length}
-            >
-              <animated.div style={testimonialsSpring[index]}>
-                <Testimonial {...testimonial} textColor="white" />
-              </animated.div>
-            </GridColumn>
-          ))}
-        </GridRow>
+        <Box pt="twenty" />
+        {TESTIMONIALS_ITEM_ROWS.map((testimonials, idx) => (
+          <GridRow withGutter alignItems="flex-end" pt="twenty" key={idx}>
+            {testimonials.map((testimonial, index) => (
+              <GridColumn key={testimonial.author} span={12 / maxItemsPerRow}>
+                <animated.div style={testimonialsSpring[index]}>
+                  <Testimonial {...testimonial} textColor="white" />
+                </animated.div>
+              </GridColumn>
+            ))}
+          </GridRow>
+        ))}
+        <Box pt="twenty" />
       </GridContainer>
     </SectionContainer>
   );

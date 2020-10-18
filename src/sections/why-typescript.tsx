@@ -54,7 +54,6 @@ const WhyTypeScriptSection = () => {
 
   const CHECK_LIST_ITEM_ROWS = useMemo(() => {
     const numberOfRows = Math.ceil(CHECK_LIST_ITEMS.length / maxItemsPerRow);
-    console.log(CHECK_LIST_ITEMS);
     return new Array(numberOfRows)
       .fill(0)
       .map((row, idx) =>
@@ -64,8 +63,6 @@ const WhyTypeScriptSection = () => {
         )
       );
   }, []);
-
-  console.log(CHECK_LIST_ITEM_ROWS);
 
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
@@ -108,7 +105,7 @@ const WhyTypeScriptSection = () => {
         {CHECK_LIST_ITEM_ROWS.map((rowItems, idx) => (
           <GridRow key={idx} mt="fifty" withGutter flexDirection="row">
             {rowItems.map(({ title, description, icon }, i) => (
-              <GridColumn span={9 / maxItemsPerRow} key={title}>
+              <GridColumn span={10 / maxItemsPerRow} key={title}>
                 <animated.div style={trail[i]}>
                   <InfoPoint
                     title={title}

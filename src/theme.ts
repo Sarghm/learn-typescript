@@ -31,6 +31,7 @@ const theme = {
     pinkDark: 'rgba(223,77,121,1)',
     black: 'rgba(47,46,46,1)',
     'black-eighty': 'rgba(47,46,46,0.8)',
+    'black-sixty': 'rgba(47,46,46,0.6)',
     'black-twenty': 'rgba(47,46,46,0.2)',
     'black-ten': 'rgba(47,46,46,0.1)',
   },

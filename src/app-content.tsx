@@ -75,7 +75,12 @@ const AppContent = () => {
         {...wobblyLineWidthProps}
       />
       <PurchaseSection />
-      <PurchasePrompt visible={activeSection !== Section.Introduction} />
+      <PurchasePrompt
+        visible={
+          activeSection !== Section.Introduction &&
+          activeSection !== Section.Purchase
+        }
+      />
     </>
   );
 };

@@ -17,6 +17,9 @@
 [x] Text content pass
 [x] Move the buy thing to a sticky CTA on the right side of the screen
 [ ] Add Ionicons / Heroicons
+
+
+
 [ ] Page meta information
 [ ] Analytics & tracking funnels
 [ ] Mobile pass
@@ -105,14 +108,17 @@ Job Role:
 - Lightning-fast learning
 Learn the essentials of TypeScript in less than two hours, and start using it in your next project today.
 
-- Try before you buy
-Check out a free segment of the course before buying to see if it's your kind of thing.
+- JavaScript developers welcome
+This course teaches TypeScript through quick, simple exercises, so as long as you’re familiar with basic JavaScript, this course is for you.
+
+- Professionally-written courses by real-world experts
+Written, shot and edited by an expert with almost a decade of software development experience.
 
 - Buy once, keep forever
 No subscriptions. Pay once, download, and keep the course forever.
 
-- Professionally-written courses by real-world experts
-Written, shot and edited by an expert with almost a decade of software development experience.
+- Try before you buy
+Click the button above to download a section of the video to see if it's right for you before you buy.
 
 - 100% satisfaction guarantee
 Not happy with the course? Email us and we'll issue you a full refund.
@@ -122,7 +128,7 @@ Not happy with the course? Email us and we'll issue you a full refund.
 - Safer, cleaner, easier to read
 TypeScript catches common JavaScript errors whilst you write, rather than after you've shipped - allowing you to confidently ship more reliable, bug-free code.
 
-- Safely use the latest and greatest features of JavaScript
+- Use the latest and greatest features of JavaScript
 The TypeScript team include newer features of JavaScript before they hit the mainstream, allowing you to get ahead of the curve whilst still writing code that's deliverable everywhere.
 
 - Be ready for your next job role

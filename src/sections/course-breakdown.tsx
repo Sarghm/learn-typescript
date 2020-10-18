@@ -23,6 +23,7 @@ import {
 import { DEFAULT_ICON_SIZE_SM } from '../consts/icons';
 import { theme } from '../theme';
 import { CourseBreakdownItem } from '../components/course-breakdown-item';
+import { responsiveValue } from '../utils/dimensions';
 
 export interface CourseSectionPoint {
   title: string;
@@ -63,7 +64,7 @@ const COURSE_SECTIONS: CourseSection[] = [
   },
   {
     title: 'Putting it all together',
-    length: 'About 15 minutes',
+    length: '~ 20 minutes',
     points: [
       { title: 'Putting Everything Into Practice Part 1', length: '07:25' },
       { title: 'Putting Everything Into Practice Part 2', length: '08:53' },
@@ -90,7 +91,10 @@ const CourseBreakdownSection = () => {
   );
 
   return (
-    <SectionContainer backgroundColor="white" py="oneHundred">
+    <SectionContainer
+      backgroundColor="white"
+      py={responsiveValue(currentSize, 'thirty', 'oneHundred')}
+    >
       <VisibleMarker
         id={Section.CourseBreakdown}
         onVisibilityChanged={handleVisibilityChanged}
@@ -133,7 +137,6 @@ const CourseBreakdownSection = () => {
               />
               <CourseStatistic
                 title="Pay once, yours forever"
-                mr="twenty"
                 icon={
                   <CloudDownloadOutline
                     size={DEFAULT_ICON_SIZE_SM}

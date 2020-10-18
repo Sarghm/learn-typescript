@@ -12,12 +12,17 @@ import { TextInput } from '../components/text-input';
 import { Button } from '../components/button';
 import { VisibleMarker } from '../components/visible-marker';
 import { Section } from '../consts/sections';
+import { responsiveValue } from '../utils/dimensions';
 
 const OfferSection = () => {
   const { currentSize } = useScreenDimensionsContext();
 
   return (
-    <SectionContainer flexGrow={1} backgroundColor="white" py="oneHundred">
+    <SectionContainer
+      flexGrow={1}
+      backgroundColor="white"
+      py={responsiveValue(currentSize, 'thirty', 'oneHundred')}
+    >
       <VisibleMarker id={Section.Offer} />
       <GridContainer currentSize={currentSize}>
         <GridRow>

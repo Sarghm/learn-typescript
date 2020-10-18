@@ -10,6 +10,7 @@ import { Box } from '../components/box';
 import { Typography } from '../components/typography';
 import { VisibleMarker } from '../components/visible-marker';
 import { Section } from '../consts/sections';
+import { responsiveValue } from '../utils/dimensions';
 
 const AUTHOR_AVATAR_SIZE = 180;
 
@@ -25,9 +26,15 @@ const AuthorIntroductionSection = () => {
     <SectionContainer flexGrow={1} backgroundColor="black">
       <VisibleMarker id={Section.AuthorIntroduction} />
       <GridContainer currentSize={currentSize}>
-        <GridRow py="oneHundred">
-          <GridColumn offset={2} span={8}>
-            <Box flexDirection="row" alignItems="center">
+        <GridRow py={responsiveValue(currentSize, 'thirty', 'oneHundred')}>
+          <GridColumn
+            offset={responsiveValue(currentSize, 0, 2)}
+            span={responsiveValue(currentSize, 12, 8)}
+          >
+            <Box
+              flexDirection={responsiveValue(currentSize, 'column', 'row')}
+              alignItems="center"
+            >
               <Box mr="thirty">
                 <Box
                   height={AUTHOR_AVATAR_SIZE}
@@ -39,8 +46,15 @@ const AuthorIntroductionSection = () => {
                   style={{ borderRadius: AUTHOR_AVATAR_SIZE / 2 }}
                 />
               </Box>
-              <Box flexDirection="column">
-                <Typography textStyle="h3" color="white">
+              <Box
+                flexDirection="column"
+                mt={responsiveValue(currentSize, 'thirty', 'zero')}
+              >
+                <Typography
+                  textStyle="h3"
+                  color="white"
+                  textAlign={responsiveValue(currentSize, 'center', 'left')}
+                >
                   An introduction to the teacher
                 </Typography>
                 <Box mt="ten" flexDirection="column">

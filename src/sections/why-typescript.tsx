@@ -21,6 +21,7 @@ import {
   BriefcaseOutline,
   CloudUploadOutline,
 } from 'heroicons-react';
+import { responsiveValue } from '../utils/dimensions';
 
 const CHECK_LIST_ITEMS: InfoPointProps[] = [
   {
@@ -50,22 +51,9 @@ const CHECK_LIST_ITEMS: InfoPointProps[] = [
 ];
 
 const WhyTypeScriptSection = () => {
-  const maxItemsPerRow = 2;
-
-  const CHECK_LIST_ITEM_ROWS = useMemo(() => {
-    const numberOfRows = Math.ceil(CHECK_LIST_ITEMS.length / maxItemsPerRow);
-    return new Array(numberOfRows)
-      .fill(0)
-      .map((row, idx) =>
-        [...CHECK_LIST_ITEMS].slice(
-          idx * maxItemsPerRow,
-          idx * maxItemsPerRow + maxItemsPerRow
-        )
-      );
-  }, []);
-
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
+  const maxItemsPerRow = responsiveValue(currentSize, 1, 2);
 
   const trail = useTrail(CHECK_LIST_ITEMS.length, {
     opacity: isAnimatedIn ? 1 : 0,
@@ -80,8 +68,23 @@ const WhyTypeScriptSection = () => {
     [isAnimatedIn]
   );
 
+  const CHECK_LIST_ITEM_ROWS = useMemo(() => {
+    const numberOfRows = Math.ceil(CHECK_LIST_ITEMS.length / maxItemsPerRow);
+    return new Array(numberOfRows)
+      .fill(0)
+      .map((row, idx) =>
+        [...CHECK_LIST_ITEMS].slice(
+          idx * maxItemsPerRow,
+          idx * maxItemsPerRow + maxItemsPerRow
+        )
+      );
+  }, [maxItemsPerRow]);
+
   return (
-    <SectionContainer backgroundColor="pink" py="oneHundred">
+    <SectionContainer
+      backgroundColor="pink"
+      py={responsiveValue(currentSize, 'thirty', 'oneHundred')}
+    >
       <VisibleMarker
         id={Section.WhyTypeScript}
         onVisibilityChanged={handleVisibilityChanged}
@@ -91,10 +94,18 @@ const WhyTypeScriptSection = () => {
           <GridColumn span={12}>
             <Box flexDirection="row" alignItems="center">
               <Box flexDirection="column">
-                <Typography textStyle="h2" color="white">
+                <Typography
+                  textStyle="h2"
+                  color="white"
+                  textAlign={responsiveValue(currentSize, 'center', 'left')}
+                >
                   Why TypeScript?
                 </Typography>
-                <Typography textStyle="h2" color="white">
+                <Typography
+                  textStyle="h2"
+                  color="white"
+                  textAlign={responsiveValue(currentSize, 'center', 'left')}
+                >
                   Simply put - it&apos;s the future.
                 </Typography>
               </Box>
@@ -105,7 +116,7 @@ const WhyTypeScriptSection = () => {
         {CHECK_LIST_ITEM_ROWS.map((rowItems, idx) => (
           <GridRow key={idx} mt="fifty" withGutter flexDirection="row">
             {rowItems.map(({ title, description, icon }, i) => (
-              <GridColumn span={10 / maxItemsPerRow} key={title}>
+              <GridColumn span={12 / maxItemsPerRow} key={title}>
                 <animated.div style={trail[i]}>
                   <InfoPoint
                     title={title}

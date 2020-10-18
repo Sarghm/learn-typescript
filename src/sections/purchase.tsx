@@ -19,6 +19,7 @@ import {
 import { DEFAULT_ICON_SIZE_SM } from '../consts/icons';
 import { theme } from '../theme';
 import { Button } from '../components/button';
+import { responsiveValue } from '../utils/dimensions';
 
 const PURCHASE_POINTS: InfoPointProps[] = [
   {
@@ -54,12 +55,20 @@ const PurchaseSection = () => {
   const { currentSize } = useScreenDimensionsContext();
 
   return (
-    <SectionContainer flexGrow={1} backgroundColor="pink" py="oneHundred">
+    <SectionContainer
+      flexGrow={1}
+      backgroundColor="pink"
+      py={responsiveValue(currentSize, 'thirty', 'oneHundred')}
+    >
       <VisibleMarker id={Section.Purchase} />
       <GridContainer currentSize={currentSize}>
         <GridRow>
-          <GridColumn span={8}>
-            <Typography textStyle="h2" color="white">
+          <GridColumn span={responsiveValue(currentSize, 12, 8)}>
+            <Typography
+              textStyle="h2"
+              color="white"
+              textAlign={responsiveValue(currentSize, 'center', 'left')}
+            >
               Ready to buy?
             </Typography>
             <Box mt="ten">
@@ -85,7 +94,7 @@ const PurchaseSection = () => {
             </Box>
           </GridColumn>
         </GridRow>
-        <GridRow pb="fifty">
+        <GridRow pb={responsiveValue(currentSize, 'oneHundred', 'fifty')}>
           <GridColumn span={12}>
             <Box mt="thirty" justifyContent="center">
               <Button variant="white" textStyle="h3">

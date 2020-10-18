@@ -17,6 +17,8 @@ import {
   BorderProps,
   boxShadow,
   BoxShadowProps,
+  ZIndexProps,
+  zIndex,
 } from 'styled-system';
 import styled from 'styled-components';
 
@@ -29,7 +31,8 @@ export interface BoxProps
     PositionProps,
     GridProps,
     BorderProps,
-    BoxShadowProps {}
+    BoxShadowProps,
+    ZIndexProps {}
 
 const Box = styled.div<BoxProps>(
   space,
@@ -40,7 +43,8 @@ const Box = styled.div<BoxProps>(
   position,
   grid,
   boxShadow,
-  border
+  border,
+  zIndex
 );
 
 Box.defaultProps = {

@@ -6,7 +6,6 @@ import React, {
   createContext,
 } from 'react';
 import { Section } from '../consts/sections';
-import { useScreenDimensionsContext } from './screen-dimensions';
 
 interface ScrollContextProps {
   children?: React.ReactNode;
@@ -29,23 +28,15 @@ const ScrollContext = createContext<{
 const ScrollContextProvider = ({ children }: ScrollContextProps) => {
   const [currentYPosition, setCurrentYPosition] = useState<number>(0);
   const [activeSection, setActiveSection] = useState<Section | null>(null);
-  const { currentSize } = useScreenDimensionsContext();
 
-  const scrollToSection = useCallback(
-    (sectionId: string) => {
-      const navigationBar = document.getElementById('navigationBar');
-      const element = document.getElementById(sectionId);
-      if (!element || !navigationBar) return;
-      window.scrollTo({
-        top:
-          element.offsetTop -
-          navigationBar.clientHeight -
-          (currentSize === 'xs' ? 20 : 50),
-        behavior: 'smooth',
-      });
-    },
-    [currentSize]
-  );
+  const scrollToSection = useCallback((sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (!element) return;
+    window.scrollTo({
+      top: element.offsetTop - window.innerHeight / 2,
+      behavior: 'smooth',
+    });
+  }, []);
 
   const handleScrolled = useCallback(() => {
     setCurrentYPosition(window.scrollY);

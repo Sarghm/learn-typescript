@@ -1,5 +1,6 @@
 const theme = {
   space: {
+    zero: 0,
     five: 5,
     ten: 10,
     fifteen: 15,
@@ -16,6 +17,9 @@ const theme = {
   },
   radii: {
     sm: 8,
+  },
+  zIndices: {
+    purchasePrompt: 10,
   },
   colors: {
     green: `rgba(30,189,198,1)`,
@@ -51,15 +55,15 @@ const theme = {
     h3: {
       fontFamily: 'Wotfard Bold, sans-serif',
       fontWeight: 'normal',
-      fontSize: '26px',
-      lineHeight: '32px',
+      fontSize: '23px',
+      lineHeight: '29px',
       letterSpacing: '-0.8px',
     },
     h3Light: {
       fontFamily: 'Wotfard Medium, sans-serif',
       fontWeight: 'normal',
-      fontSize: '26px',
-      lineHeight: '39px',
+      fontSize: '23px',
+      lineHeight: '29px',
       letterSpacing: '-1.25px',
     },
     h4: {

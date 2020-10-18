@@ -15,7 +15,7 @@
 [x] Circles in title section layout and animation
 
 [x] Text content pass
-[ ] Move the buy thing to a sticky CTA on the right side of the screen
+[x] Move the buy thing to a sticky CTA on the right side of the screen
 [ ] Add Ionicons / Heroicons
 [ ] Page meta information
 [ ] Analytics & tracking funnels

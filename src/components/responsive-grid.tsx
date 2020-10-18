@@ -16,7 +16,7 @@ export const DEFAULT_MD_GRID_GUTTER = 40;
 
 export const DEFAULT_XS_GRID_MARGIN = 20;
 export const DEFAULT_SM_GRID_MARGIN = 20;
-export const DEFAULT_MD_GRID_MARGIN = 40;
+export const DEFAULT_MD_GRID_MARGIN = 0;
 
 interface GridContainerProps extends ResponsiveProps {
   children: React.ReactNode;
@@ -24,6 +24,7 @@ interface GridContainerProps extends ResponsiveProps {
   gridMargin?: { [size in ResponsiveSize]?: number };
   gridGutter?: { [size in ResponsiveSize]?: number };
   gridColumns?: { [size in ResponsiveSize]?: number };
+  customWidth?: string | number;
 }
 
 interface GridColumnProps extends Omit<BoxProps, 'children' | 'color'> {
@@ -54,6 +55,7 @@ const GridContainer = ({
   gridGutter: customGridGutter,
   gridMargin: customGridMargin,
   gridColumns: customGridColumns,
+  customWidth,
 }: GridContainerProps) => {
   const gridGutter = useMemo(
     () =>
@@ -93,14 +95,10 @@ const GridContainer = ({
 
   return (
     <GridContext.Provider value={values}>
-      <Box
-        width="100%"
-        flexDirection="column"
-        maxWidth={GRID_MAX_WIDTH}
-        px={gridMargin}
-        flexGrow={0}
-      >
-        {children}
+      <Box width="100%" maxWidth={GRID_MAX_WIDTH} px={gridMargin} flexGrow={0}>
+        <Box flexDirection="column" width={customWidth || '100%'}>
+          {children}
+        </Box>
       </Box>
     </GridContext.Provider>
   );
@@ -153,7 +151,7 @@ const StyledGridColumn = styled(Box)<{
   columns: number;
 }>`
   flex-direction: column;
-  flex-basis: ${(props) => (props.span / 12) * 100}%;
+  width: ${(props) => (props.span / 12) * 100}%;
   padding-right: ${(props) => props.gutter}px;
   flex-shrink: 1;
 `;

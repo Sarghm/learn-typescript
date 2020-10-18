@@ -20,21 +20,37 @@ import { WobblyLine } from '../components/wobbly-line';
 import { Circle } from '../components/circle';
 import { responsiveValue } from '../utils/dimensions';
 import { theme } from '../theme';
+import { LightningBoltOutline } from 'heroicons-react';
+import { AcademicCapOutline } from 'heroicons-react';
+import { SparklesOutline } from 'heroicons-react';
+import { DEFAULT_ICON_SIZE } from '../consts/icons';
 
 const VIDEO_CONTAINER_ASPECT_RATIO = 0.56;
 const WOBBLY_LINE_HEIGHT = 90;
 
 const KEY_FEATURES = [
   {
-    title: `⚡️ Lightning-fast learning`,
+    icon: (
+      <LightningBoltOutline
+        size={DEFAULT_ICON_SIZE}
+        color={theme.colors.pink}
+      />
+    ),
+    title: `Lightning-fast learning`,
     description: `Learn the basics of TypeScript in just under two hours. No frills; just the core knowledge you’ll need to start writing TypeScript.`,
   },
   {
-    title: `⚡️ All JavaScript developers welcome`,
+    icon: (
+      <SparklesOutline size={DEFAULT_ICON_SIZE} color={theme.colors.pink} />
+    ),
+    title: `JavaScript developers welcome`,
     description: `This course teaches TypeScript through quick, simple exercises, so as long as you’re familiar with basic JavaScript, this course is for you.`,
   },
   {
-    title: `⚡️ Become TypeScript ready`,
+    icon: (
+      <AcademicCapOutline size={DEFAULT_ICON_SIZE} color={theme.colors.pink} />
+    ),
+    title: `Become TypeScript ready`,
     description: `After you’ve finished the course, you’ll have everything you need to start writing TypeScript in your next project, or upgrade an existing JavaScript codebase.`,
   },
 ];
@@ -176,9 +192,8 @@ const IntroductionSection = () => {
       <WobblyLine
         backgroundColor="green"
         foregroundColor="white"
-        customWidthPercentage={responsiveValue(currentSize, 200, undefined)}
+        customWidthPercentage={currentSize === 'xs' ? 200 : undefined}
       />
-
       <SectionContainer
         mt={-theme.space[textContainerInnerPaddingY] - WOBBLY_LINE_HEIGHT}
         zIndex={2}
@@ -221,6 +236,7 @@ const IntroductionSection = () => {
             withGutter={responsiveValue(currentSize, true, false)}
             pb={responsiveValue(currentSize, undefined, 'oneHundred')}
             flexDirection={responsiveValue(currentSize, 'column', 'row')}
+            alignItems="flex-start"
           >
             {KEY_FEATURES.map((keyFeature, index) => (
               <GridColumn
@@ -228,8 +244,8 @@ const IntroductionSection = () => {
                 span={responsiveValue(currentSize, 12, 4)}
                 mt={responsiveValue(
                   currentSize,
-                  index === 0 ? undefined : 'twenty',
-                  undefined
+                  index === 0 ? 'zero' : 'twenty',
+                  'zero'
                 )}
               >
                 <animated.div style={keyFeaturesSpring[index]}>

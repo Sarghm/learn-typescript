@@ -16,15 +16,13 @@
 
 [x] Text content pass
 [x] Move the buy thing to a sticky CTA on the right side of the screen
-[ ] Add Ionicons / Heroicons
-
-
-
-[ ] Page meta information
-[ ] Analytics & tracking funnels
+[x] Add Ionicons / Heroicons
 [ ] Mobile pass
-[ ] Red text on discount
 [ ] Chase Testimonials
+[ ] Page meta information
+[ ] Introduction video
+[ ] Analytics & tracking funnels
+[ ] Red text on discount
 [ ] Gumroad copy
 [ ] Gumroad artwork
 [ ] Advertisement artwork

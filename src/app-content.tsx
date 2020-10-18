@@ -11,9 +11,13 @@ import { AuthorIntroductionSection } from './sections/author-introduction';
 import { WobblyLine, WobblyLineProps } from './components/wobbly-line';
 import { useScreenDimensionsContext } from './context/screen-dimensions';
 import { useMemo } from 'react';
+import { PurchasePrompt } from './components/purchase-prompt';
+import { useScrollContext } from './context/scroll';
+import { Section } from './consts/sections';
 
 const AppContent = () => {
   const { currentSize } = useScreenDimensionsContext();
+  const { activeSection } = useScrollContext();
 
   const wobblyLineWidthProps: Pick<
     WobblyLineProps,
@@ -71,6 +75,7 @@ const AppContent = () => {
         {...wobblyLineWidthProps}
       />
       <PurchaseSection />
+      <PurchasePrompt visible={activeSection !== Section.Introduction} />
     </>
   );
 };

@@ -1,4 +1,6 @@
+import { CheckCircleOutline } from 'heroicons-react';
 import React from 'react';
+import { theme } from '../theme';
 import { Box } from './box';
 import { Typography } from './typography';
 
@@ -13,12 +15,10 @@ const CheckListItem = ({ title, children }: CheckListItemProps) => {
   return (
     <Box flexDirection="column">
       <Box flexDirection="row" alignItems="center">
-        <Box
-          width={CHECK_MARK_SIZE}
-          height={CHECK_MARK_SIZE}
-          borderRadius="sm"
-          backgroundColor="white"
-          mr="ten"
+        <CheckCircleOutline
+          color={theme.colors.green}
+          size={CHECK_MARK_SIZE}
+          style={{ marginRight: 15 }}
         />
         <Typography textStyle="h3" color="white">
           {title}

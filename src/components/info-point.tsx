@@ -20,15 +20,25 @@ const InfoPoint = ({
 }: InfoPointProps) => {
   return (
     <Box flexDirection="column">
-      <Box flexDirection="row">
-        {icon ? <Box mr="one">{icon}</Box> : null}
-        <Typography textStyle="h3Light" color={titleColor}>
+      <Box flexDirection="row" alignItems="center">
+        {icon ? <Box mr="fifteen">{icon}</Box> : null}
+        <Typography
+          textStyle="h3Light"
+          color={titleColor}
+          style={{ wordBreak: 'break-word' }}
+        >
           {title}
         </Typography>
       </Box>
-      <Typography textStyle="body" color={descriptionColor}>
-        {description}
-      </Typography>
+      <Box mt="ten">
+        <Typography
+          textStyle="body"
+          color={descriptionColor}
+          style={{ wordBreak: 'break-word' }}
+        >
+          {description}
+        </Typography>
+      </Box>
     </Box>
   );
 };

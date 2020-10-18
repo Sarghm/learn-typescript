@@ -1,35 +1,73 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { SectionContainer } from '../components/section-container';
 import {
   GridContainer,
   GridRow,
   GridColumn,
 } from '../components/responsive-grid';
-import { CheckListItemProps } from '../components/checklist-item';
 import { Typography } from '../components/typography';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { useTrail, animated } from 'react-spring';
 import { DefaultAnimationConfigMediumBounce } from '../consts/animated';
-import { InfoPoint } from '../components/info-point';
+import { InfoPoint, InfoPointProps } from '../components/info-point';
 import { VisibleMarker } from '../components/visible-marker';
 import { Section } from '../consts/sections';
+import { Box } from '../components/box';
+import { QuestionMarkCircleOutline } from 'heroicons-react';
+import { DEFAULT_ICON_SIZE } from '../consts/icons';
+import { theme } from '../theme';
+import {
+  StarOutline,
+  CodeOutline,
+  BriefcaseOutline,
+  CloudUploadOutline,
+} from 'heroicons-react';
 
-const CHECK_LIST_ITEMS: CheckListItemProps[] = [
+const CHECK_LIST_ITEMS: InfoPointProps[] = [
   {
-    title: 'I already have some JavaScript experience',
-    children: `This course has been written with the assumption that you already have some JavaScript experience. You don't have to have much - as long as you have an understanding of variables and functions, you should be totally fine!`,
+    title: 'Safer, cleaner, easier to read',
+    description: `TypeScript catches common JavaScript errors whilst you write, rather than after you've shipped - allowing you to confidently ship more reliable, bug-free code.`,
+    icon: <StarOutline size={DEFAULT_ICON_SIZE} color={theme.colors.white} />,
   },
   {
-    title: 'I already have some JavaScript experience',
-    children: `This course has been written with the assumption that you already have some JavaScript experience. You don't have to have much - as long as you have an understanding of variables and functions, you should be totally fine!`,
+    title: 'Be ready for your next job role',
+    description: `With companies like Google, Airbnb and Slack adopting TypeScript, there's no better time to skill up and prepare for your next job interview.`,
+    icon: (
+      <BriefcaseOutline size={DEFAULT_ICON_SIZE} color={theme.colors.white} />
+    ),
   },
   {
-    title: 'I already have some JavaScript experience',
-    children: `This course has been written with the assumption that you already have some JavaScript experience. You don't have to have much - as long as you have an understanding of variables and functions, you should be totally fine!`,
+    title: 'Use the latest and greatest features of JavaScript',
+    description: `The TypeScript team include newer features of JavaScript before they hit the mainstream, allowing you to get ahead of the curve whilst still writing code that's deliverable everywhere.`,
+    icon: <CodeOutline size={DEFAULT_ICON_SIZE} color={theme.colors.white} />,
+  },
+  {
+    title: 'Deploy TypeScript wherever you can deploy JavaScript',
+    description: `TypeScript files are compiled down to JavaScript files, which means you can write TypeScript and deploy it anywhere you would deploy JavaScript.`,
+    icon: (
+      <CloudUploadOutline size={DEFAULT_ICON_SIZE} color={theme.colors.white} />
+    ),
   },
 ];
 
 const WhyTypeScriptSection = () => {
+  const maxItemsPerRow = 2;
+
+  const CHECK_LIST_ITEM_ROWS = useMemo(() => {
+    const numberOfRows = Math.ceil(CHECK_LIST_ITEMS.length / maxItemsPerRow);
+    console.log(CHECK_LIST_ITEMS);
+    return new Array(numberOfRows)
+      .fill(0)
+      .map((row, idx) =>
+        [...CHECK_LIST_ITEMS].slice(
+          idx * maxItemsPerRow,
+          idx * maxItemsPerRow + maxItemsPerRow
+        )
+      );
+  }, []);
+
+  console.log(CHECK_LIST_ITEM_ROWS);
+
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
 
@@ -55,29 +93,43 @@ const WhyTypeScriptSection = () => {
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={12}>
-            <Typography textStyle="h2" color="white">
-              Why TypeScript?
-            </Typography>
-            <Typography textStyle="h2" color="white">
-              Simply put - it&apos;s the future.
-            </Typography>
+            <Box flexDirection="row" alignItems="center">
+              <Box>
+                <QuestionMarkCircleOutline
+                  size={DEFAULT_ICON_SIZE}
+                  color={theme.colors.white}
+                  style={{ marginRight: 15 }}
+                />
+              </Box>
+              <Box flexDirection="column">
+                <Typography textStyle="h2" color="white">
+                  Why TypeScript?
+                </Typography>
+                <Typography textStyle="h2" color="white">
+                  Simply put - it&apos;s the future.
+                </Typography>
+              </Box>
+            </Box>
           </GridColumn>
         </GridRow>
 
-        <GridRow mt="fifty" withGutter>
-          {CHECK_LIST_ITEMS.map((item, i) => (
-            <GridColumn span={4} key={item.title}>
-              <animated.div style={trail[i]}>
-                <InfoPoint
-                  title={item.title}
-                  description={item.children}
-                  titleColor="white"
-                  descriptionColor="white"
-                />
-              </animated.div>
-            </GridColumn>
-          ))}
-        </GridRow>
+        {CHECK_LIST_ITEM_ROWS.map((rowItems, idx) => (
+          <GridRow key={idx} mt="fifty" withGutter flexDirection="row">
+            {rowItems.map(({ title, description, icon }, i) => (
+              <GridColumn span={9 / maxItemsPerRow} key={title}>
+                <animated.div style={trail[i]}>
+                  <InfoPoint
+                    title={title}
+                    description={description}
+                    icon={icon}
+                    titleColor="white"
+                    descriptionColor="white"
+                  />
+                </animated.div>
+              </GridColumn>
+            ))}
+          </GridRow>
+        ))}
       </GridContainer>
     </SectionContainer>
   );

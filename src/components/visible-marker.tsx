@@ -19,15 +19,15 @@ const VisibleMarker = ({ onVisibilityChanged, id }: VisibleMarkerProps) => {
   const { currentDimensions } = useScreenDimensionsContext();
   const currentYPositionWithOffset = currentYPosition + window.innerHeight / 2;
 
+  const offsetTop = boxRef.current?.getBoundingClientRect().top || 0;
+
   useEffect(() => {
     if (!boxRef.current) return;
     // Set visible when the offset is larger than currentPos - half the visibility
     // height range AND less than half the currentPos + visibility height range
     setIsVisible(
-      boxRef.current.offsetTop - VISIBILITY_HEIGHT_RANGE / 2 <
-        currentYPositionWithOffset &&
-        boxRef.current.offsetTop + VISIBILITY_HEIGHT_RANGE / 2 >
-          currentYPositionWithOffset
+      offsetTop - VISIBILITY_HEIGHT_RANGE / 2 <= currentYPositionWithOffset &&
+        offsetTop + VISIBILITY_HEIGHT_RANGE / 2 >= currentYPositionWithOffset
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [boxRef.current, currentYPosition, currentDimensions.width]);

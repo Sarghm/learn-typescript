@@ -15,7 +15,22 @@ const VideoPlayer = ({ aspectRatio, ...rest }: VideoPlayerProps) => {
   }, [aspectRatio]);
 
   return (
-    <Box ref={containerRef} {...rest} height={height} borderRadius="sm"></Box>
+    <Box
+      ref={containerRef}
+      {...rest}
+      height={height}
+      borderRadius="sm"
+      overflow="hidden"
+    >
+      <iframe
+        title="TypeScript Course Introduction Video"
+        style={{ position: 'relative', width: '100%', height: '100%' }}
+        src="https://player.vimeo.com/video/470760699"
+        frameBorder="0"
+        allow="autoplay; fullscreen"
+        allowFullScreen
+      ></iframe>
+    </Box>
   );
 };
 

@@ -1,0 +1,1 @@
+export const VIDEO_CONTAINER_ASPECT_RATIO = 0.56;

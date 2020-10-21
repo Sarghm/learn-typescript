@@ -24,8 +24,8 @@ import { LightningBoltOutline } from 'heroicons-react';
 import { AcademicCapOutline } from 'heroicons-react';
 import { SparklesOutline } from 'heroicons-react';
 import { DEFAULT_ICON_SIZE } from '../consts/icons';
+import { VIDEO_CONTAINER_ASPECT_RATIO } from '../consts/video';
 
-const VIDEO_CONTAINER_ASPECT_RATIO = 0.56;
 const WOBBLY_LINE_HEIGHT = 90;
 
 const KEY_FEATURES = [
@@ -226,7 +226,7 @@ const IntroductionSection = () => {
                   textStyle="h3"
                   onPress={() => scrollToSection(Section.Offer)}
                 >
-                  Get the first part for free!
+                  Watch the free section
                 </Button>
               </animated.div>
             </GridColumn>

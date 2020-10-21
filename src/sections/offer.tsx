@@ -7,12 +7,13 @@ import {
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { SectionContainer } from '../components/section-container';
 import { Box } from '../components/box';
-import { Typography } from '../components/typography';
 import { TextInput } from '../components/text-input';
 import { Button } from '../components/button';
 import { VisibleMarker } from '../components/visible-marker';
 import { Section } from '../consts/sections';
 import { responsiveValue } from '../utils/dimensions';
+import { VideoPlayer } from '../components/video-player';
+import { VIDEO_CONTAINER_ASPECT_RATIO } from '../consts/video';
 
 const OfferSection = () => {
   const { currentSize } = useScreenDimensionsContext();
@@ -27,9 +28,7 @@ const OfferSection = () => {
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={8} offset={2}>
-            <Typography textStyle="h2" color="pink" textAlign="center">
-              Get the first 2 videos for free.
-            </Typography>
+            <VideoPlayer aspectRatio={VIDEO_CONTAINER_ASPECT_RATIO} />
           </GridColumn>
         </GridRow>
         <GridRow>

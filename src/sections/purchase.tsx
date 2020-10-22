@@ -8,7 +8,7 @@ import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { SectionContainer } from '../components/section-container';
 import { Box } from '../components/box';
 import { Typography } from '../components/typography';
-import { VisibleMarker } from '../components/visible-marker';
+import { SectionMarker } from '../components/section-marker';
 import { Section } from '../consts/sections';
 import { InfoPointProps } from '../components/info-point';
 import {
@@ -20,6 +20,7 @@ import { DEFAULT_ICON_SIZE_SM } from '../consts/icons';
 import { theme } from '../theme';
 import { Button } from '../components/button';
 import { responsiveValue } from '../utils/dimensions';
+import { SectionProps } from './shared';
 
 const PURCHASE_POINTS: InfoPointProps[] = [
   {
@@ -51,7 +52,8 @@ const PURCHASE_POINTS: InfoPointProps[] = [
   },
 ];
 
-const PurchaseSection = () => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const PurchaseSection = ({ isVisible }: SectionProps) => {
   const { currentSize } = useScreenDimensionsContext();
 
   return (
@@ -60,7 +62,7 @@ const PurchaseSection = () => {
       backgroundColor="pink"
       py={responsiveValue(currentSize, 'thirty', 'oneHundred')}
     >
-      <VisibleMarker id={Section.Purchase} />
+      <SectionMarker id={Section.Purchase} />
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={responsiveValue(currentSize, 12, 8)}>

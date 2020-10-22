@@ -29,52 +29,61 @@ const AppContent = () => {
         : { customWidthPercentage: undefined },
     [currentSize]
   );
+
   return (
     <>
       <AppHeader />
-      <IntroductionSection />
+      <IntroductionSection isVisible={activeSection === Section.Introduction} />
       <WobblyLine
         backgroundColor="white"
         foregroundColor="black"
         {...wobblyLineWidthProps}
       />
-      <CourseChecklistSection />
+      <CourseChecklistSection
+        isVisible={activeSection === Section.CourseChecklist}
+      />
       <WobblyLine
         backgroundColor="black"
         foregroundColor="pink"
         {...wobblyLineWidthProps}
       />
-      <WhyTypeScriptSection />
+      <WhyTypeScriptSection
+        isVisible={activeSection === Section.WhyTypeScript}
+      />
       <WobblyLine
         backgroundColor="pink"
         foregroundColor="white"
         {...wobblyLineWidthProps}
       />
-      <CourseBreakdownSection />
+      <CourseBreakdownSection
+        isVisible={activeSection === Section.CourseBreakdown}
+      />
       <WobblyLine
         backgroundColor="white"
         foregroundColor="green"
         {...wobblyLineWidthProps}
       />
-      <TestimonialsSection />
+      <TestimonialsSection isVisible={activeSection === Section.Testimonials} />
       <WobblyLine
         backgroundColor="green"
         foregroundColor="black"
         {...wobblyLineWidthProps}
       />
-      <AuthorIntroductionSection />
+      <AuthorIntroductionSection
+        isVisible={activeSection === Section.AuthorIntroduction}
+      />
       <WobblyLine
         backgroundColor="black"
         foregroundColor="white"
         {...wobblyLineWidthProps}
       />
-      <OfferSection />
+      <OfferSection isVisible={activeSection === Section.Offer} />
       <WobblyLine
         backgroundColor="white"
         foregroundColor="pink"
         {...wobblyLineWidthProps}
       />
-      <PurchaseSection />
+      <PurchaseSection isVisible={activeSection === Section.Purchase} />
       <PurchasePrompt
         visible={
           activeSection !== Section.Introduction &&

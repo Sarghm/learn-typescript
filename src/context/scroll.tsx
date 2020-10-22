@@ -4,29 +4,30 @@ import React, {
   useCallback,
   useContext,
   createContext,
+  useRef,
 } from 'react';
 import { Section } from '../consts/sections';
+
+const VISIBILITY_HEIGHT_RANGE = window.innerHeight / 2;
 
 interface ScrollContextProps {
   children?: React.ReactNode;
 }
 
 const ScrollContext = createContext<{
-  currentYPosition: number;
   activeSection: Section | null;
-  setActiveSection: (activeSection: Section | null) => void;
   scrollToSection: (section: Section) => void;
+  setSectionOffset: (id: Section, offset: number) => void;
 }>({
-  currentYPosition: 0,
   activeSection: null,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setActiveSection: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   scrollToSection: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setSectionOffset: () => {},
 });
 
 const ScrollContextProvider = ({ children }: ScrollContextProps) => {
-  const [currentYPosition, setCurrentYPosition] = useState<number>(0);
+  const sectionOffsets = useRef<Record<string, number>>({});
   const [activeSection, setActiveSection] = useState<Section | null>(null);
 
   const scrollToSection = useCallback((sectionId: string) => {
@@ -39,22 +40,35 @@ const ScrollContextProvider = ({ children }: ScrollContextProps) => {
   }, []);
 
   const handleScrolled = useCallback(() => {
-    setCurrentYPosition(window.scrollY);
-  }, []);
+    const currentYPositionWithOffset = window.scrollY + window.innerHeight / 2;
+    Object.keys(sectionOffsets.current).forEach((key: string) => {
+      const offset = sectionOffsets.current[key];
+      const isVisible =
+        currentYPositionWithOffset > offset - VISIBILITY_HEIGHT_RANGE &&
+        currentYPositionWithOffset < offset + VISIBILITY_HEIGHT_RANGE;
+      if (isVisible) setActiveSection(key as Section);
+    });
+  }, [sectionOffsets]);
+
+  const setSectionOffset = useCallback(
+    (id: Section, offset: number) => {
+      sectionOffsets.current = { ...sectionOffsets.current, [id]: offset };
+    },
+    [sectionOffsets]
+  );
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScrolled);
+    window.addEventListener('scroll', handleScrolled, false);
     handleScrolled();
-    return () => window.removeEventListener('scroll', handleScrolled);
+    return () => window.removeEventListener('scroll', handleScrolled, false);
   }, [handleScrolled]);
 
   return (
     <ScrollContext.Provider
       value={{
-        currentYPosition,
         activeSection,
-        setActiveSection,
         scrollToSection,
+        setSectionOffset,
       }}
     >
       {children}

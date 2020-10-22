@@ -34,7 +34,7 @@ const PurchasePrompt = ({ visible = false }: PurchasePromptProps) => {
       >
         <Box mr="ten">
           <Typography textStyle="h4" color="white">
-            Buy now for £10
+            Special Opening Deal: Buy now for £9.99
           </Typography>
         </Box>
         <Button variant="white" textStyle="h4">

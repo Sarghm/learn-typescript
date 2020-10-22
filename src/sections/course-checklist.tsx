@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { SectionContainer } from '../components/section-container';
 import {
   GridContainer,
@@ -14,9 +14,10 @@ import { Typography } from '../components/typography';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { useTrail, animated, useSprings } from 'react-spring';
 import { DefaultAnimationConfigFastNoBounce } from '../consts/animated';
-import { VisibleMarker } from '../components/visible-marker';
+import { SectionMarker } from '../components/section-marker';
 import { Section } from '../consts/sections';
 import { responsiveValue } from '../utils/dimensions';
+import { SectionProps } from './shared';
 
 const CHECK_LIST_ITEMS: CheckListItemProps[] = [
   {
@@ -33,7 +34,7 @@ const CHECK_LIST_ITEMS: CheckListItemProps[] = [
   },
 ];
 
-const CourseChecklistSection = () => {
+const CourseChecklistSection = ({ isVisible }: SectionProps) => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
@@ -51,22 +52,16 @@ const CourseChecklistSection = () => {
     }))
   );
 
-  const handleVisibilityChanged = useCallback(
-    (isVisible: boolean) => {
-      setIsAnimatedIn(isAnimatedIn || isVisible);
-    },
-    [isAnimatedIn]
-  );
+  useEffect(() => {
+    setIsAnimatedIn(isAnimatedIn || isVisible);
+  }, [isAnimatedIn, isVisible]);
 
   return (
     <SectionContainer
       backgroundColor="black"
       py={responsiveValue(currentSize, 'thirty', 'oneHundred')}
     >
-      <VisibleMarker
-        id={Section.CourseChecklist}
-        onVisibilityChanged={handleVisibilityChanged}
-      />
+      <SectionMarker id={Section.CourseChecklist} />
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={12}>

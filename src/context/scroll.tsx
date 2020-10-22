@@ -31,10 +31,8 @@ const ScrollContextProvider = ({ children }: ScrollContextProps) => {
   const [activeSection, setActiveSection] = useState<Section | null>(null);
 
   const scrollToSection = useCallback((sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (!element) return;
     window.scrollTo({
-      top: element.offsetTop - window.innerHeight / 2,
+      top: sectionOffsets.current[sectionId] - VISIBILITY_HEIGHT_RANGE,
       behavior: 'smooth',
     });
   }, []);

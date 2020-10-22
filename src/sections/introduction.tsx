@@ -198,13 +198,15 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
         <GridContainer currentSize={currentSize}>
           <GridRow>
             <GridColumn
-              offset={responsiveValue(currentSize, 0, 2)}
-              span={responsiveValue(currentSize, 12, 8)}
+              offset={responsiveValue(currentSize, 0, 1, 2)}
+              span={responsiveValue(currentSize, 12, 10, 8)}
             >
               <animated.div
                 style={{ justifyContent: 'center', ...videoSpring }}
               >
                 <VideoPlayer
+                  title="Introduction to TypeScript video"
+                  vimeoId="470760699"
                   mt="thirty"
                   width="100%"
                   aspectRatio={VIDEO_CONTAINER_ASPECT_RATIO}

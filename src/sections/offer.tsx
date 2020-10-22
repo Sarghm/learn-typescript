@@ -6,9 +6,6 @@ import {
 } from '../components/responsive-grid';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { SectionContainer } from '../components/section-container';
-import { Box } from '../components/box';
-import { TextInput } from '../components/text-input';
-import { Button } from '../components/button';
 import { SectionMarker } from '../components/section-marker';
 import { Section } from '../consts/sections';
 import { responsiveValue } from '../utils/dimensions';
@@ -29,20 +26,12 @@ const OfferSection = ({ isVisible }: SectionProps) => {
       <SectionMarker id={Section.Offer} />
       <GridContainer currentSize={currentSize}>
         <GridRow>
-          <GridColumn span={8} offset={2}>
-            <VideoPlayer aspectRatio={VIDEO_CONTAINER_ASPECT_RATIO} />
-          </GridColumn>
-        </GridRow>
-        <GridRow>
-          <GridColumn span={8} offset={2}>
-            <Box flexDirection="column">
-              <Box mt="twenty">
-                <TextInput placeholder="enter@youremail.here" />
-              </Box>
-              <Box mt="twenty" justifyContent="center">
-                <Button textStyle="h4">Get the first bit free</Button>
-              </Box>
-            </Box>
+          <GridColumn span={12}>
+            <VideoPlayer
+              title="TypeScript Course Sample Chapter - Enums"
+              vimeoId="470795934"
+              aspectRatio={VIDEO_CONTAINER_ASPECT_RATIO}
+            />
           </GridColumn>
         </GridRow>
       </GridContainer>

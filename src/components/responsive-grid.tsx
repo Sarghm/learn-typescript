@@ -95,7 +95,7 @@ const GridContainer = ({
 
   return (
     <GridContext.Provider value={values}>
-      <Box width="100%" maxWidth={GRID_MAX_WIDTH} px={gridMargin} flexGrow={0}>
+      <Box maxWidth={GRID_MAX_WIDTH} px={gridMargin} flexGrow={1}>
         <Box flexDirection="column" width={customWidth || '100%'}>
           {children}
         </Box>

@@ -21,6 +21,7 @@ import { theme } from '../theme';
 import { Button } from '../components/button';
 import { responsiveValue } from '../utils/dimensions';
 import { SectionProps } from './shared';
+import { Footer } from '../components/footer';
 
 const PURCHASE_POINTS: InfoPointProps[] = [
   {
@@ -61,6 +62,7 @@ const PurchaseSection = ({ isVisible }: SectionProps) => {
       flexGrow={1}
       backgroundColor="pink"
       py={responsiveValue(currentSize, 'thirty', 'oneHundred')}
+      flexDirection="column"
     >
       <SectionMarker id={Section.Purchase} />
       <GridContainer currentSize={currentSize}>
@@ -106,6 +108,7 @@ const PurchaseSection = ({ isVisible }: SectionProps) => {
           </GridColumn>
         </GridRow>
       </GridContainer>
+      <Footer />
     </SectionContainer>
   );
 };

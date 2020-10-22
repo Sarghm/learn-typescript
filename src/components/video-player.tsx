@@ -1,18 +1,27 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { Box, BoxProps } from './box';
 
 interface VideoPlayerProps extends Omit<BoxProps, 'children' | 'color'> {
   aspectRatio: number;
+  vimeoId: string;
+  title: string;
 }
 
-const VideoPlayer = ({ aspectRatio, ...rest }: VideoPlayerProps) => {
+const VideoPlayer = ({
+  aspectRatio,
+  vimeoId,
+  title,
+  ...rest
+}: VideoPlayerProps) => {
+  const { currentSize } = useScreenDimensionsContext();
   const [height, setHeight] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
     setHeight(containerRef.current.clientWidth * aspectRatio);
-  }, [aspectRatio]);
+  }, [aspectRatio, currentSize]);
 
   return (
     <Box
@@ -23,9 +32,9 @@ const VideoPlayer = ({ aspectRatio, ...rest }: VideoPlayerProps) => {
       overflow="hidden"
     >
       <iframe
-        title="TypeScript Course Introduction Video"
+        title={title}
         style={{ position: 'relative', width: '100%', height: '100%' }}
-        src="https://player.vimeo.com/video/470760699"
+        src={`https://player.vimeo.com/video/${vimeoId}`}
         frameBorder="0"
         allow="autoplay; fullscreen"
         allowFullScreen

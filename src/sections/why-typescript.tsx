@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { SectionContainer } from '../components/section-container';
 import {
   GridContainer,
@@ -10,7 +10,7 @@ import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { useTrail, animated } from 'react-spring';
 import { DefaultAnimationConfigMediumBounce } from '../consts/animated';
 import { InfoPoint, InfoPointProps } from '../components/info-point';
-import { VisibleMarker } from '../components/visible-marker';
+import { SectionMarker } from '../components/section-marker';
 import { Section } from '../consts/sections';
 import { Box } from '../components/box';
 import { DEFAULT_ICON_SIZE } from '../consts/icons';
@@ -22,6 +22,7 @@ import {
   CloudUploadOutline,
 } from 'heroicons-react';
 import { responsiveValue } from '../utils/dimensions';
+import { SectionProps } from './shared';
 
 const CHECK_LIST_ITEMS: InfoPointProps[] = [
   {
@@ -50,7 +51,7 @@ const CHECK_LIST_ITEMS: InfoPointProps[] = [
   },
 ];
 
-const WhyTypeScriptSection = () => {
+const WhyTypeScriptSection = ({ isVisible }: SectionProps) => {
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
   const maxItemsPerRow = responsiveValue(currentSize, 1, 2);
@@ -61,12 +62,9 @@ const WhyTypeScriptSection = () => {
     config: DefaultAnimationConfigMediumBounce,
   });
 
-  const handleVisibilityChanged = useCallback(
-    (isVisible: boolean) => {
-      setIsAnimatedIn(isAnimatedIn || isVisible);
-    },
-    [isAnimatedIn]
-  );
+  useEffect(() => {
+    setIsAnimatedIn(isAnimatedIn || isVisible);
+  }, [isAnimatedIn, isVisible]);
 
   const CHECK_LIST_ITEM_ROWS = useMemo(() => {
     const numberOfRows = Math.ceil(CHECK_LIST_ITEMS.length / maxItemsPerRow);
@@ -85,10 +83,7 @@ const WhyTypeScriptSection = () => {
       backgroundColor="pink"
       py={responsiveValue(currentSize, 'thirty', 'oneHundred')}
     >
-      <VisibleMarker
-        id={Section.WhyTypeScript}
-        onVisibilityChanged={handleVisibilityChanged}
-      />
+      <SectionMarker id={Section.WhyTypeScript} />
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={12}>

@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Box } from '../components/box';
 import { Typography } from '../components/typography';
 import {
@@ -11,7 +11,7 @@ import { SectionContainer } from '../components/section-container';
 import { VideoPlayer } from '../components/video-player';
 import { Button } from '../components/button';
 import { InfoPoint } from '../components/info-point';
-import { VisibleMarker } from '../components/visible-marker';
+import { SectionMarker } from '../components/section-marker';
 import { Section } from '../consts/sections';
 import { useScrollContext } from '../context/scroll';
 import { useSpring, animated, useTrail } from 'react-spring';
@@ -25,6 +25,7 @@ import { AcademicCapOutline } from 'heroicons-react';
 import { SparklesOutline } from 'heroicons-react';
 import { DEFAULT_ICON_SIZE } from '../consts/icons';
 import { VIDEO_CONTAINER_ASPECT_RATIO } from '../consts/video';
+import { SectionProps } from './shared';
 
 const WOBBLY_LINE_HEIGHT = 90;
 
@@ -55,8 +56,8 @@ const KEY_FEATURES = [
   },
 ];
 
-const IntroductionSection = () => {
-  const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const IntroductionSection = ({ isVisible }: SectionProps) => {
   const { scrollToSection } = useScrollContext();
   const { currentSize } = useScreenDimensionsContext();
   const textContainerInnerPaddingY = useMemo(
@@ -64,16 +65,15 @@ const IntroductionSection = () => {
     [currentSize]
   );
 
-  const handleVisibilityChanged = useCallback(
-    (isVisible: boolean) => {
-      setIsAnimatedIn(isAnimatedIn || isVisible);
-    },
-    [isAnimatedIn]
-  );
-
   const titleSpring = useSpring({
-    transform: `translateY(${isAnimatedIn ? 0 : 30}px)`,
-    opacity: isAnimatedIn ? 1 : 0,
+    from: {
+      opacity: 0,
+      transform: `translateY(30px)`,
+    },
+    to: {
+      opacity: 1,
+      transform: `translateY(0}px)`,
+    },
     config: DefaultAnimationConfigFastBounce,
   });
 
@@ -86,7 +86,7 @@ const IntroductionSection = () => {
       opacity: 1,
       transform: `translateY(0px)`,
     },
-    delay: 200,
+    delay: 400,
     config: DefaultAnimationConfigFastBounce,
   });
 
@@ -99,7 +99,7 @@ const IntroductionSection = () => {
       opacity: 1,
       transform: `scale(1, 1)`,
     },
-    delay: 600,
+    delay: 1000,
     config: DefaultAnimationConfigFastBounce,
   });
 
@@ -112,7 +112,7 @@ const IntroductionSection = () => {
       opacity: 1,
       transform: `scale(1, 1)`,
     },
-    delay: 800,
+    delay: 1200,
     config: DefaultAnimationConfigFastBounce,
   });
 
@@ -125,7 +125,7 @@ const IntroductionSection = () => {
       opacity: 1,
       transform: `translateY(0px)`,
     },
-    delay: 800,
+    delay: 1400,
     config: DefaultAnimationConfigFastBounce,
   });
 
@@ -144,11 +144,8 @@ const IntroductionSection = () => {
   return (
     <>
       <SectionContainer flexGrow={1} backgroundColor="green" zIndex={1}>
+        <SectionMarker id={Section.Introduction} />
         {circles}
-        <VisibleMarker
-          id={Section.Introduction}
-          onVisibilityChanged={handleVisibilityChanged}
-        />
         <GridContainer currentSize={currentSize}>
           <GridRow>
             <GridColumn

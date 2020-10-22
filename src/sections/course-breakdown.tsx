@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SectionContainer } from '../components/section-container';
 import { Card } from '../components/card';
 import { Typography } from '../components/typography';
@@ -9,7 +9,7 @@ import {
 } from '../components/responsive-grid';
 import { Box } from '../components/box';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
-import { VisibleMarker } from '../components/visible-marker';
+import { SectionMarker } from '../components/section-marker';
 import { Section } from '../consts/sections';
 import { useTrail, animated } from 'react-spring';
 import { DefaultAnimationConfigFastBounce } from '../consts/animated';
@@ -24,6 +24,7 @@ import { DEFAULT_ICON_SIZE_SM } from '../consts/icons';
 import { theme } from '../theme';
 import { CourseBreakdownItem } from '../components/course-breakdown-item';
 import { responsiveValue } from '../utils/dimensions';
+import { SectionProps } from './shared';
 
 export interface CourseSectionPoint {
   title: string;
@@ -73,7 +74,7 @@ const COURSE_SECTIONS: CourseSection[] = [
   },
 ];
 
-const CourseBreakdownSection = () => {
+const CourseBreakdownSection = ({ isVisible }: SectionProps) => {
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
 
@@ -83,22 +84,16 @@ const CourseBreakdownSection = () => {
     config: DefaultAnimationConfigFastBounce,
   });
 
-  const handleVisibilityChanged = useCallback(
-    (isVisible: boolean) => {
-      setIsAnimatedIn(isAnimatedIn || isVisible);
-    },
-    [isAnimatedIn]
-  );
+  useEffect(() => {
+    setIsAnimatedIn(isAnimatedIn || isVisible);
+  }, [isAnimatedIn, isVisible]);
 
   return (
     <SectionContainer
       backgroundColor="white"
       py={responsiveValue(currentSize, 'thirty', 'oneHundred')}
     >
-      <VisibleMarker
-        id={Section.CourseBreakdown}
-        onVisibilityChanged={handleVisibilityChanged}
-      />
+      <SectionMarker id={Section.CourseBreakdown} />
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={12}>

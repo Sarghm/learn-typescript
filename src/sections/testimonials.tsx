@@ -14,49 +14,7 @@ import { DefaultAnimationConfigMediumNoBounce } from '../consts/animated';
 import { Box } from '../components/box';
 import { responsiveValue } from '../utils/dimensions';
 
-const TESTIMONIALS: TestimonialProps[] = [
-  {
-    author: 'Anisah Osman Britton',
-    authorDetails: 'CTO at Vinokilo & CEO at 23 Code Street',
-    testimonial: 'What an excellent course!',
-    authorAvatarImageUrl: '/images/sam.jpg',
-  },
-  {
-    author: 'Ella Henry',
-    authorDetails: 'Full-stack Software Engineer',
-    testimonial:
-      'What an excellent course! What an excellent course! What an excellent course!',
-    authorAvatarImageUrl: '/images/sam.jpg',
-  },
-  {
-    author: 'Jinjin Wang',
-    authorDetails: 'Full-stack Software Engineer',
-    testimonial:
-      'What an excellent course! What an excellent course! What an excellent course! What an excellent course! What an excellent course!',
-    authorAvatarImageUrl: '/images/sam.jpg',
-  },
-  {
-    author: 'Alison Yoon',
-    authorDetails: 'Full-stack Software Engineer',
-    testimonial:
-      'What an excellent course! What an excellent course! What an excellent course! What an excellent course! What an excellent course!',
-    authorAvatarImageUrl: '/images/sam.jpg',
-  },
-  {
-    author: 'Tony McShane',
-    authorDetails: 'Full-stack Software Engineer',
-    testimonial:
-      'What an excellent course! What an excellent course! What an excellent course! What an excellent course! What an excellent course!',
-    authorAvatarImageUrl: '/images/sam.jpg',
-  },
-  {
-    author: 'Luke Gosling',
-    authorDetails: 'Full-stack Software Engineer at Manchester City Airport',
-    testimonial:
-      'What an excellent course! What an excellent course! What an excellent course! What an excellent course! What an excellent course!',
-    authorAvatarImageUrl: '/images/sam.jpg',
-  },
-];
+const TESTIMONIALS: TestimonialProps[] = [];
 
 const TestimonialsSection = () => {
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);

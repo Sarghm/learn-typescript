@@ -106,9 +106,11 @@ const CourseChecklistSection = ({ isVisible }: SectionProps) => {
           </GridColumn>
           {currentSize !== 'xs' ? (
             <GridColumn span={6}>
-              <Typography textStyle="h1" color="white">
-                An image will go here one day
-              </Typography>
+              <img
+                src="/images/artwork.svg"
+                width="100%"
+                alt="Promotional artwork for the TypeScript course"
+              />
             </GridColumn>
           ) : null}
         </GridRow>

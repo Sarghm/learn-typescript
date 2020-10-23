@@ -49,6 +49,7 @@ const Footer = () => {
       <Box
         flexDirection={responsiveValue(currentSize, 'column', 'row')}
         pt={responsiveValue(currentSize, 'twenty', 'thirty')}
+        flexWrap="wrap"
         pb="twenty"
         justifyContent="center"
       >
@@ -77,6 +78,20 @@ const Footer = () => {
             />
           }
           mt={responsiveValue(currentSize, 'twenty', 'zero')}
+        />
+        <FooterItem
+          title="CodeSnap"
+          subtitle="CodeSnap is an upcoming platform that houses all of Sam's online courses."
+          href="mailto:hello@codesnap.io"
+          icon={
+            <img
+              alt="CodeSnap Logo"
+              src="/images/codesnap-logo-white.png"
+              width={DEFAULT_ICON_SIZE_SM}
+              height={DEFAULT_ICON_SIZE_SM}
+            />
+          }
+          mt="twenty"
         />
       </Box>
     </Box>

@@ -28,6 +28,7 @@ import { VIDEO_CONTAINER_ASPECT_RATIO } from '../consts/video';
 import { SectionProps } from './shared';
 
 const WOBBLY_LINE_HEIGHT = 90;
+const CODESNAP_LOGO_WIDTH = 150;
 
 const KEY_FEATURES = [
   {
@@ -179,6 +180,29 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
                       A short course to introduce JavaScript developers to the
                       magic of TypeScript
                     </Typography>
+                  </Box>
+                  <Box
+                    height={1}
+                    justifySelf="center"
+                    backgroundColor="white-forty"
+                    m="0 auto"
+                    my="twenty"
+                    mb="ten"
+                    width="50%"
+                  />
+                  <Box flexDirection="column" alignItems="center">
+                    <Typography
+                      textStyle="bodySmall"
+                      color="white"
+                      textAlign="center"
+                    >
+                      Presented by
+                    </Typography>
+                    <img
+                      src="/images/codesnap-logo.png"
+                      width={CODESNAP_LOGO_WIDTH}
+                      alt="CodeSnap Logo"
+                    />
                   </Box>
                 </animated.div>
               </Box>

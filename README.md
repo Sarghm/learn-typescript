@@ -17,10 +17,15 @@
 [x] Text content pass
 [x] Move the buy thing to a sticky CTA on the right side of the screen
 [x] Add Ionicons / Heroicons
-[ ] Mobile pass
-[ ] Chase Testimonials
-[ ] Page meta information
-[ ] Introduction video
+[x] Mobile pass
+[x] Add artwork
+[x] Chase Testimonials
+[x] Square app icon
+[x] Page meta information
+[x] Footer component
+[x] CodeSnap plug on title
+[x] CodeSnap plug on footer
+[x] Introduction video
 [ ] Analytics & tracking funnels
 [ ] Red text on discount
 [ ] Gumroad copy

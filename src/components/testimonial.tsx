@@ -3,7 +3,7 @@ import { DefaultTheme } from 'styled-components';
 import { Box } from './box';
 import { Typography } from './typography';
 
-const AVATAR_IMAGE_SIZE = 45;
+const AVATAR_IMAGE_SIZE = 60;
 
 export interface TestimonialProps {
   testimonial: string;

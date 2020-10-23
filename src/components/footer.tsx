@@ -27,7 +27,7 @@ const FooterItem = ({
     <a
       href={href}
       target="_blank"
-      rel="noreferrer"
+      rel="noreferrer noopener"
       style={{ textDecoration: 'none', maxWidth: FOOTER_ITEM_MAX_WIDTH }}
     >
       <Box flexDirection="row" alignItems="center" {...rest}>

@@ -7,6 +7,8 @@ import { responsiveValue } from '../utils/dimensions';
 import { Box, BoxProps } from './box';
 import { Typography } from './typography';
 
+const FOOTER_ITEM_MAX_WIDTH = 400;
+
 interface FooterItemProps extends Omit<BoxProps, 'color'> {
   title: string;
   subtitle?: string;
@@ -22,7 +24,11 @@ const FooterItem = ({
   ...rest
 }: FooterItemProps) => {
   return (
-    <a href={href} style={{ textDecoration: 'none' }}>
+    <a
+      href={href}
+      target="_blank"
+      style={{ textDecoration: 'none', maxWidth: FOOTER_ITEM_MAX_WIDTH }}
+    >
       <Box flexDirection="row" alignItems="center" {...rest}>
         {icon ? <Box mr="fifteen">{icon}</Box> : null}
         <Box flexDirection="column">
@@ -48,9 +54,8 @@ const Footer = () => {
       <Box height={1} backgroundColor="white-forty" />
       <Box
         flexDirection={responsiveValue(currentSize, 'column', 'row')}
-        pt={responsiveValue(currentSize, 'twenty', 'thirty')}
+        pt="ten"
         flexWrap="wrap"
-        pb="twenty"
         justifyContent="center"
       >
         <FooterItem
@@ -63,12 +68,12 @@ const Footer = () => {
               color={theme.colors.white}
             />
           }
-          mr={responsiveValue(currentSize, 'zero', 'twenty')}
+          p="twenty"
         />
         <FooterItem
           title="GitHub Repo"
           subtitle="This website was written using TypeScript! Check out the source code."
-          href="mailto:hello@codesnap.io"
+          href="https://github.com/Sarghm/learn-typescript"
           icon={
             <img
               alt="GitHub Logo"
@@ -77,12 +82,12 @@ const Footer = () => {
               height={DEFAULT_ICON_SIZE_SM}
             />
           }
-          mt={responsiveValue(currentSize, 'twenty', 'zero')}
+          p="twenty"
         />
         <FooterItem
           title="CodeSnap"
           subtitle="CodeSnap is an upcoming platform that houses all of Sam's online courses."
-          href="mailto:hello@codesnap.io"
+          href="https://www.codesnap.io"
           icon={
             <img
               alt="CodeSnap Logo"
@@ -91,7 +96,7 @@ const Footer = () => {
               height={DEFAULT_ICON_SIZE_SM}
             />
           }
-          mt="twenty"
+          p="twenty"
         />
       </Box>
     </Box>

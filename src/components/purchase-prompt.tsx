@@ -1,12 +1,11 @@
 import React, { useCallback } from 'react';
-import { animated, useSpring } from 'react-spring';
-import { DefaultAnimationConfigFastNoBounce } from '../consts/animated';
 import { Section } from '../consts/sections';
 import { AnalyticEvent, useAnalyticsContext } from '../context/analytics';
 import { useScrollContext } from '../context/scroll';
 import { theme } from '../theme';
 import { Box } from './box';
 import { Button } from './button';
+import { StickyPrompt } from './sticky-prompt';
 import { Typography } from './typography';
 
 interface PurchasePromptProps {
@@ -17,23 +16,20 @@ const PurchasePrompt = ({ visible = false }: PurchasePromptProps) => {
   const { logEvent } = useAnalyticsContext();
   const { scrollToSection } = useScrollContext();
 
-  const spring = useSpring({
-    transform: `translateY(${visible ? 0 : 150}px)`,
-    config: DefaultAnimationConfigFastNoBounce,
-  });
-
   const handlePressedNagComponentButton = useCallback(() => {
     logEvent(AnalyticEvent.PressedNagComponentBuyNow);
     scrollToSection(Section.Purchase);
   }, [logEvent, scrollToSection]);
 
   return (
-    <animated.div
+    <StickyPrompt
+      visible={visible}
       style={{
-        ...spring,
-        position: 'fixed',
-        width: '100%',
-        bottom: 0,
+        width: 400,
+        bottom: 10,
+        right: 10,
+        borderRadius: theme.radii.sm,
+        overflow: 'hidden',
         zIndex: theme.zIndices.purchasePrompt,
       }}
     >
@@ -57,7 +53,7 @@ const PurchasePrompt = ({ visible = false }: PurchasePromptProps) => {
           Buy Now
         </Button>
       </Box>
-    </animated.div>
+    </StickyPrompt>
   );
 };
 

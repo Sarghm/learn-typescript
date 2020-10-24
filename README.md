@@ -34,7 +34,7 @@
 [ ] Add an FAQ bit at the bottom
 [x] Gumroad copy
 [x] Gumroad artwork
-[ ] Cookies Policy
+[x] Cookies Policy
 [x] Analytics & tracking funnels
 [x] Header banner
 [x] Red text on discount

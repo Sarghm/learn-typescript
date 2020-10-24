@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { IntroductionSection } from './sections/introduction';
 import { AppHeader } from './components/app-header';
 import { CourseChecklistSection } from './sections/course-checklist';
@@ -14,8 +14,11 @@ import { useMemo } from 'react';
 import { PurchasePrompt } from './components/purchase-prompt';
 import { useScrollContext } from './context/scroll';
 import { Section } from './consts/sections';
+import { CookiesPrompt } from './components/cookies-prompt';
+import { CODESNAP_COOKIES_POLICY_DISMISSED } from './consts/storage';
 
 const AppContent = () => {
+  const [showCookies, setShowCookies] = useState<boolean>(true);
   const { currentSize } = useScreenDimensionsContext();
   const { activeSection } = useScrollContext();
 
@@ -29,6 +32,17 @@ const AppContent = () => {
         : { customWidthPercentage: undefined },
     [currentSize]
   );
+
+  const showCookiesPolicy = useMemo(() => {
+    if (window.localStorage.getItem(CODESNAP_COOKIES_POLICY_DISMISSED))
+      return false;
+    return showCookies;
+  }, [showCookies]);
+
+  const handleDismissedCookiesPolicy = useCallback(() => {
+    setShowCookies(false);
+    window.localStorage.setItem(CODESNAP_COOKIES_POLICY_DISMISSED, 'true');
+  }, []);
 
   return (
     <>
@@ -89,6 +103,10 @@ const AppContent = () => {
           activeSection !== Section.Introduction &&
           activeSection !== Section.Purchase
         }
+      />
+      <CookiesPrompt
+        visible={showCookiesPolicy}
+        onDismiss={handleDismissedCookiesPolicy}
       />
     </>
   );

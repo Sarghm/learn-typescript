@@ -75,8 +75,14 @@ const PURCHASE_BUNDLE: PurchaseTileProps = {
         "100% money back guarantee - if you're not happy, email us and we'll give you a full refund, no questions asked",
     },
   ],
-  offer: 'Special opening offer - 50% off!',
-  cta: 'Purchase the course for £9.99',
+  offer: (
+    <Typography textStyle="body" color="red" textAlign="center">
+      50% off - buy now for{' '}
+      <span style={{ textDecoration: 'line-through' }}>£19.99</span>{' '}
+      <span style={{ fontFamily: theme.textStyles.h4.fontFamily }}>£9.99</span>
+    </Typography>
+  ),
+  cta: 'Buy now',
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

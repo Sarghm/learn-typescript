@@ -9,7 +9,7 @@ interface StickyPromptProps {
 
 const StickyPrompt = ({ visible, children, style = {} }: StickyPromptProps) => {
   const spring = useSpring({
-    transform: `translateY(${visible ? 0 : 150}px)`,
+    transform: `translateY(${visible ? 0 : 200}px)`,
     config: DefaultAnimationConfigFastBounce,
   });
 

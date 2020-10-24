@@ -31,7 +31,7 @@ const OfferSection = ({ isVisible }: SectionProps) => {
           <GridColumn span={12}>
             <VideoPlayer
               title="TypeScript Course Sample Chapter - Enums"
-              vimeoId="470795934"
+              vimeoId="471773808"
               aspectRatio={VIDEO_CONTAINER_ASPECT_RATIO}
               onPlay={() => logEvent(AnalyticEvent.PlayedSampleChapter)}
             />

@@ -32,6 +32,8 @@ export interface ButtonProps {
   textStyle?: keyof typeof theme.textStyles;
   children: string;
   onPress?: () => void;
+  flexGrow?: number;
+  alignSelf?: 'center' | 'flex-start' | 'flex-end' | 'stretch';
 }
 
 const Button = ({
@@ -39,6 +41,8 @@ const Button = ({
   children,
   textStyle = 'h3',
   onPress,
+  flexGrow = 0,
+  alignSelf = 'center',
 }: ButtonProps) => {
   const [active, setActive] = useState<boolean>(false);
   const [hovered, setHovered] = useState<boolean>(false);
@@ -63,8 +67,9 @@ const Button = ({
       style={{
         ...outerContainerProps,
         position: 'relative',
-        alignSelf: 'center',
         zIndex: 2,
+        alignSelf,
+        flexGrow,
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}

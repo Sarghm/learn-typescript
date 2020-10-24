@@ -12,9 +12,11 @@ import { responsiveValue } from '../utils/dimensions';
 import { VideoPlayer } from '../components/video-player';
 import { VIDEO_CONTAINER_ASPECT_RATIO } from '../consts/video';
 import { SectionProps } from './shared';
+import { AnalyticEvent, useAnalyticsContext } from '../context/analytics';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const OfferSection = ({ isVisible }: SectionProps) => {
+  const { logEvent } = useAnalyticsContext();
   const { currentSize } = useScreenDimensionsContext();
 
   return (
@@ -31,6 +33,7 @@ const OfferSection = ({ isVisible }: SectionProps) => {
               title="TypeScript Course Sample Chapter - Enums"
               vimeoId="470795934"
               aspectRatio={VIDEO_CONTAINER_ASPECT_RATIO}
+              onPlay={() => logEvent(AnalyticEvent.PlayedSampleChapter)}
             />
           </GridColumn>
         </GridRow>

@@ -19,6 +19,22 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyAlB45qxpWL49ZxcLFqSFt9S_dTbmFYXjM",
+        authDomain: "introduction-to-typescript.firebaseapp.com",
+        databaseURL: "https://introduction-to-typescript.firebaseio.com",
+        projectId: "introduction-to-typescript",
+        storageBucket: "introduction-to-typescript.appspot.com",
+        messagingSenderId: "776835250037",
+        appId: "1:776835250037:web:57456b5c7aeba1d211853c",
+        measurementId: "G-YE6KGPRHGT"
+      };
+      firebase.initializeApp(firebaseConfig);
+      window.analytics = firebase.analytics();
+    </script>
     <div id="root" style="overflow: hidden; width: 100%;"></div>
   </body>
 </html>

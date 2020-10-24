@@ -94,14 +94,7 @@ const WhyTypeScriptSection = ({ isVisible }: SectionProps) => {
                   color="white"
                   textAlign={responsiveValue(currentSize, 'center', 'left')}
                 >
-                  Why TypeScript?
-                </Typography>
-                <Typography
-                  textStyle="h2"
-                  color="white"
-                  textAlign={responsiveValue(currentSize, 'center', 'left')}
-                >
-                  Simply put - it&apos;s the future.
+                  Why learn TypeScript?
                 </Typography>
               </Box>
             </Box>

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { animated, useSpring } from 'react-spring';
 import { DefaultAnimationConfigFastNoBounce } from '../consts/animated';
+import { Section } from '../consts/sections';
+import { AnalyticEvent, useAnalyticsContext } from '../context/analytics';
+import { useScrollContext } from '../context/scroll';
 import { theme } from '../theme';
 import { Box } from './box';
 import { Button } from './button';
@@ -11,10 +14,18 @@ interface PurchasePromptProps {
 }
 
 const PurchasePrompt = ({ visible = false }: PurchasePromptProps) => {
+  const { logEvent } = useAnalyticsContext();
+  const { scrollToSection } = useScrollContext();
+
   const spring = useSpring({
     transform: `translateY(${visible ? 0 : 150}px)`,
     config: DefaultAnimationConfigFastNoBounce,
   });
+
+  const handlePressedNagComponentButton = useCallback(() => {
+    logEvent(AnalyticEvent.PressedNagComponentBuyNow);
+    scrollToSection(Section.Purchase);
+  }, [logEvent, scrollToSection]);
 
   return (
     <animated.div
@@ -31,13 +42,18 @@ const PurchasePrompt = ({ visible = false }: PurchasePromptProps) => {
         backgroundColor="green"
         justifyContent="center"
         alignItems="center"
+        flexDirection="column"
       >
-        <Box mr="ten">
-          <Typography textStyle="h4" color="white">
-            Special Opening Deal: Buy now for £9.99
+        <Box mr="ten" mb="ten">
+          <Typography textStyle="h4Light" color="white">
+            50% off - purchase the course for £9.99
           </Typography>
         </Box>
-        <Button variant="white" textStyle="h4">
+        <Button
+          onPress={handlePressedNagComponentButton}
+          variant="white"
+          textStyle="h4"
+        >
           Buy Now
         </Button>
       </Box>

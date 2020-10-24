@@ -42,7 +42,7 @@ const TESTIMONIALS: TestimonialProps[] = [
 const TestimonialsSection = ({ isVisible }: SectionProps) => {
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
-  const maxItemsPerRow = responsiveValue(currentSize, 2, 3);
+  const maxItemsPerRow = responsiveValue(currentSize, 1, 3);
 
   const TESTIMONIALS_ITEM_ROWS = useMemo(() => {
     const numberOfRows = Math.ceil(TESTIMONIALS.length / maxItemsPerRow);

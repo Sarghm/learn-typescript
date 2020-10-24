@@ -56,16 +56,18 @@ const PURCHASE_POINTS: InfoPointProps[] = [
 ];
 
 const PURCHASE_BUNDLE: PurchaseTileProps = {
-  title: 'Introduction to TypeScript',
+  title: 'An Introduction to TypeScript Video Course',
   items: [
     {
-      title: 'Access to all of the video content in the course',
+      title:
+        'Access to download all 16 high-quality videos in the course to watch at your own pace',
+    },
+    {
+      title:
+        'Access to stream all of the video content on web or mobile with no expiration date',
     },
     {
       title: 'Access to all of the code you see in the videos',
-    },
-    {
-      title: 'Yours to download and keep forever',
     },
     {
       title: 'Free future updates to the course',

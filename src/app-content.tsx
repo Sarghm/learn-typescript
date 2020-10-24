@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import { IntroductionSection } from './sections/introduction';
-import { AppHeader } from './components/app-header';
 import { CourseChecklistSection } from './sections/course-checklist';
 import { WhyTypeScriptSection } from './sections/why-typescript';
 import { CourseBreakdownSection } from './sections/course-breakdown';
@@ -46,7 +45,6 @@ const AppContent = () => {
 
   return (
     <>
-      <AppHeader />
       <IntroductionSection isVisible={activeSection === Section.Introduction} />
       <WobblyLine
         backgroundColor="white"

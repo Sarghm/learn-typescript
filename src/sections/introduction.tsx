@@ -237,7 +237,7 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
               >
                 <VideoPlayer
                   title="Introduction to TypeScript video"
-                  vimeoId="470760699"
+                  vimeoId="471773793"
                   mt="thirty"
                   width="100%"
                   aspectRatio={VIDEO_CONTAINER_ASPECT_RATIO}

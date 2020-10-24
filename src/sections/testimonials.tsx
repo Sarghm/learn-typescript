@@ -18,24 +18,24 @@ import { SectionProps } from './shared';
 const TESTIMONIALS: TestimonialProps[] = [
   {
     testimonial:
-      "I haven't used TypeScript before and I've tried another online course on TypeScript before but this one was very good. I honestly enjoyed it. Sam's really good at delivering the content in a clear, easy way.",
+      "I hadn't used TypeScript before starting my current job and initially struggled to make the step over from JavaScript. This course massively helped to accelerate my knowledge and understanding to the point where I now prefer TypeScript to JavaScript (something I never thought I'd say!)",
+    author: 'Ella',
+    authorDetails: 'Full-stack engineer',
+    authorAvatarImageUrl: '/images/testimonials/ella.jpg',
+  },
+  {
+    testimonial:
+      "I haven't used TypeScript before, and I've tried another online course on TypeScript before, but this one was very good. I honestly enjoyed it. Sam's really good at delivering the content in a clear, easy way.",
     author: 'Alison',
-    authorDetails: 'Junior full-stack engineer at Planes',
+    authorDetails: 'Junior full-stack engineer',
     authorAvatarImageUrl: '/images/testimonials/alison.jpg',
   },
   {
     testimonial:
-      "It's an easy-to-follow, well-taught and explained course with very cool animations! I love that you sometimes throw in some VS code tips and tricks (e.g. reload window, find and replace). I have been using TypeScript for couple of months, I still found this course helpful in that it fills in the knowledge gaps of TypeScript for me, and I had a couple 'aha!' moments 😄",
+      "It's an easy-to-follow, well-taught and explained course with very cool animations! I love that you sometimes throw in some VS code tips and tricks. I found this course helpful in that it fills in the knowledge gaps of TypeScript for me, and I had a couple 'aha!' moments 😄",
     author: 'Jinjin',
-    authorDetails: 'Junior full-stack engineer at Planes',
+    authorDetails: 'Junior full-stack engineer',
     authorAvatarImageUrl: '/images/testimonials/jinjin.jpg',
-  },
-  {
-    testimonial:
-      "I hadn't used TypeScript before starting my current job and initially struggled to make the step over from JavaScript. This course massively helped to accelerate my knowledge and understanding to the point where I now prefer TypeScript to JavaScript (something I never thought I'd say!)",
-    author: 'Ella',
-    authorDetails: 'Full-stack engineer at Planes',
-    authorAvatarImageUrl: '/images/testimonials/ella.jpg',
   },
 ];
 

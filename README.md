@@ -29,7 +29,7 @@
 [x] Remove watermarks on audio
 [x] Re-balance audio input
 [x] Add a "what do I get?" list section 
-[ ] Set up Codesnap email
+[x] Set up Codesnap email
 [x] Gumroad Integration
 [ ] Add an FAQ bit at the bottom
 [x] Gumroad copy

@@ -1,6 +1,7 @@
 import { QuestionMarkCircleOutline } from 'heroicons-react';
 import React from 'react';
 import { DEFAULT_ICON_SIZE_SM } from '../consts/icons';
+import { GITHUB_URL, SUPPORT_EMAIL_ADDRESS } from '../consts/urls';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { theme } from '../theme';
 import { responsiveValue } from '../utils/dimensions';
@@ -62,7 +63,7 @@ const Footer = () => {
         <FooterItem
           title="Need help?"
           subtitle="If you need any help, drop us an email."
-          href="mailto:hello@codesnap.io"
+          href={`mailto:${SUPPORT_EMAIL_ADDRESS}`}
           icon={
             <QuestionMarkCircleOutline
               size={DEFAULT_ICON_SIZE_SM}
@@ -74,7 +75,7 @@ const Footer = () => {
         <FooterItem
           title="GitHub Repo"
           subtitle="This website was written using TypeScript! Check out the source code."
-          href="https://github.com/Sarghm/learn-typescript"
+          href={GITHUB_URL}
           icon={
             <img
               alt="GitHub Logo"

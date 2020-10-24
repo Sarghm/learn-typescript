@@ -7,7 +7,7 @@ import { Typography } from './typography';
 export interface PurchaseTileProps {
   title: string;
   items: CheckListItemProps[];
-  offer?: string;
+  offer?: React.ReactNode;
   cta: string;
   onPress?: () => void;
 }
@@ -53,11 +53,8 @@ const PurchaseTile = ({
         my="ten"
       />
       <Box flexDirection="column" alignItems="center">
-        {offer ? (
-          <Typography textStyle="body" color="red" mt="ten" textAlign="center">
-            {offer}
-          </Typography>
-        ) : null}
+        {offer}
+
         <Box width="100%" mt="ten">
           <Button flexGrow={1} alignSelf="stretch" onPress={onPress}>
             {cta}

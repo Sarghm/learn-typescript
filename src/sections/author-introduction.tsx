@@ -20,6 +20,7 @@ const AUTHOR_DETAILS = {
   avatarImageURL: '/images/sam.jpg',
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const AuthorIntroductionSection = ({ isVisible }: SectionProps) => {
   const { currentSize } = useScreenDimensionsContext();
 
@@ -62,19 +63,20 @@ const AuthorIntroductionSection = ({ isVisible }: SectionProps) => {
                   <Box>
                     <Typography textStyle="body" color="white">
                       My name&apos;s Sam, and I&apos;ll be your guide through
-                      your TypeScript journey! I&apos;m an award-winning
-                      software engineeer with almost a decade&apos;s worth of
-                      experience in the field, and over a half a million App
+                      your TypeScript journey! I&apos;m a freelance software
+                      engineeer with almost a decade&apos;s worth of experience
+                      building mobile and web apps for plenty of different
+                      clients, and currently have over a half a million(!) App
                       Store app downloads to my name.
                     </Typography>
                   </Box>
                   <Box mt="ten">
                     <Typography textStyle="body" color="white">
-                      It&apos;s safe to say I&apos;ve tried my hand at plenty of
-                      different programming languages along the way. Out of all
-                      of them, TypeScript has been the one that&apos;s excited
-                      me more than any other - and that&apos;s the reason I
-                      wrote this course.
+                      I think it&apos;s safe to say I&apos;ve tried my hand at
+                      plenty of different programming languages throughout my
+                      career so far. However, out of all of them, TypeScript has
+                      been the one that&apos;s excited me more than any other -
+                      and that&apos;s the reason I wrote this course!
                     </Typography>
                   </Box>
                 </Box>

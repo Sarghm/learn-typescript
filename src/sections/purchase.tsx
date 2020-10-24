@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   GridContainer,
   GridRow,
@@ -18,10 +18,12 @@ import {
 } from 'heroicons-react';
 import { DEFAULT_ICON_SIZE_SM } from '../consts/icons';
 import { theme } from '../theme';
-import { Button } from '../components/button';
 import { responsiveValue } from '../utils/dimensions';
 import { SectionProps } from './shared';
 import { Footer } from '../components/footer';
+import { PurchaseTile, PurchaseTileProps } from '../components/purchase-tile';
+import { PURCHASE_URL } from '../consts/urls';
+import { AnalyticEvent, useAnalyticsContext } from '../context/analytics';
 
 const PURCHASE_POINTS: InfoPointProps[] = [
   {
@@ -53,29 +55,59 @@ const PURCHASE_POINTS: InfoPointProps[] = [
   },
 ];
 
+const PURCHASE_BUNDLE: PurchaseTileProps = {
+  title: 'Introduction to TypeScript',
+  items: [
+    {
+      title: 'Access to all of the video content in the course',
+    },
+    {
+      title: 'Access to all of the code you see in the videos',
+    },
+    {
+      title: 'Yours to download and keep forever',
+    },
+    {
+      title: 'Free future updates to the course',
+    },
+    {
+      title:
+        "100% money back guarantee - if you're not happy, email us and we'll give you a full refund, no questions asked",
+    },
+  ],
+  offer: 'Special opening offer - 50% off!',
+  cta: 'Purchase the course for £9.99',
+};
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const PurchaseSection = ({ isVisible }: SectionProps) => {
+  const { logEvent } = useAnalyticsContext();
   const { currentSize } = useScreenDimensionsContext();
+
+  const handlePressedPurchase = useCallback(() => {
+    logEvent(AnalyticEvent.PressedPurchase);
+    window.open(PURCHASE_URL);
+  }, [logEvent]);
 
   return (
     <SectionContainer
       flexGrow={1}
       backgroundColor="pink"
-      py={responsiveValue(currentSize, 'thirty', 'oneHundred')}
+      mt={-100}
       flexDirection="column"
     >
-      <SectionMarker id={Section.Purchase} />
       <GridContainer currentSize={currentSize}>
         <GridRow>
-          <GridColumn span={responsiveValue(currentSize, 12, 8)}>
-            <Typography
-              textStyle="h2"
-              color="white"
-              textAlign={responsiveValue(currentSize, 'center', 'left')}
-            >
-              Ready to buy?
-            </Typography>
+          <GridColumn
+            offset={responsiveValue(currentSize, 0, 2)}
+            span={responsiveValue(currentSize, 12, 8)}
+          >
+            <PurchaseTile
+              {...PURCHASE_BUNDLE}
+              onPress={handlePressedPurchase}
+            />
             <Box mt="ten">
+              <SectionMarker id={Section.Purchase} />
               <ul>
                 {PURCHASE_POINTS.map((purchasePoint) => (
                   <li key={purchasePoint.title.slice(10)}>
@@ -98,17 +130,10 @@ const PurchaseSection = ({ isVisible }: SectionProps) => {
             </Box>
           </GridColumn>
         </GridRow>
-        <GridRow pb={responsiveValue(currentSize, 'oneHundred', 'fifty')}>
-          <GridColumn span={12}>
-            <Box mt="thirty" justifyContent="center">
-              <Button variant="white" textStyle="h3">
-                Buy the course now for £9.99
-              </Button>
-            </Box>
-          </GridColumn>
-        </GridRow>
       </GridContainer>
-      <Footer />
+      <Box mt="fifty">
+        <Footer />
+      </Box>
     </SectionContainer>
   );
 };

@@ -26,11 +26,37 @@
 [x] CodeSnap plug on title
 [x] CodeSnap plug on footer
 [x] Introduction video
-[ ] Analytics & tracking funnels
-[ ] Red text on discount
+[x] Remove watermarks on audio
+[x] Re-balance audio input
+[x] Add a "what do I get?" list section 
+[ ] Set up Codesnap email
+[ ] Gumroad Integration
+[ ] Add an FAQ bit at the bottom
 [ ] Gumroad copy
 [ ] Gumroad artwork
+[ ] Cookies Policy
+[ ] Analytics & tracking funnels
+[ ] Header banner
+[ ] Red text on discount
 [ ] Advertisement artwork
+
+## What do I get?
+
+
+
+## FAQ
+
+- Mac or Windows?
+
+- What software do you use in the tutorial videos?
+
+- What if I buy the course and I'm not happy with it?
+
+- Do you store my payment details anywhere?
+
+- What will I be able to do with TypeScript after I've finished the course?
+
+
 
 ## Meta
 

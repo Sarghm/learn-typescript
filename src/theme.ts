@@ -29,6 +29,7 @@ const theme = {
     'white-forty': `rgba(255,255,255,0.4)`,
     grey: `rgba(250,190,200,1)`,
     pink: 'rgba(255,99,146,1)',
+    'pink-forty': 'rgba(255,99,146,0.4)',
     pinkDark: 'rgba(223,77,121,1)',
     black: 'rgba(47,46,46,1)',
     'black-eighty': 'rgba(47,46,46,0.8)',

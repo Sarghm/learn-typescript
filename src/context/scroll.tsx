@@ -7,6 +7,7 @@ import React, {
   useRef,
 } from 'react';
 import { Section } from '../consts/sections';
+import { AnalyticEvent, useAnalyticsContext } from './analytics';
 
 const VISIBILITY_HEIGHT_RANGE = window.innerHeight / 2;
 
@@ -27,6 +28,7 @@ const ScrollContext = createContext<{
 });
 
 const ScrollContextProvider = ({ children }: ScrollContextProps) => {
+  const { logEvent } = useAnalyticsContext();
   const sectionOffsets = useRef<Record<string, number>>({});
   const [activeSection, setActiveSection] = useState<Section | null>(null);
 
@@ -60,6 +62,12 @@ const ScrollContextProvider = ({ children }: ScrollContextProps) => {
     handleScrolled();
     return () => window.removeEventListener('scroll', handleScrolled, false);
   }, [handleScrolled]);
+
+  useEffect(() => {
+    logEvent(AnalyticEvent.ViewedSection, {
+      sectionId: activeSection || 'No Section',
+    });
+  }, [activeSection, logEvent]);
 
   return (
     <ScrollContext.Provider

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Box } from '../components/box';
 import { Typography } from '../components/typography';
 import {
@@ -26,6 +26,7 @@ import { SparklesOutline } from 'heroicons-react';
 import { DEFAULT_ICON_SIZE } from '../consts/icons';
 import { VIDEO_CONTAINER_ASPECT_RATIO } from '../consts/video';
 import { SectionProps } from './shared';
+import { useAnalyticsContext, AnalyticEvent } from '../context/analytics';
 
 const WOBBLY_LINE_HEIGHT = 90;
 const CODESNAP_LOGO_WIDTH = 150;
@@ -59,6 +60,7 @@ const KEY_FEATURES = [
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const IntroductionSection = ({ isVisible }: SectionProps) => {
+  const { logEvent } = useAnalyticsContext();
   const { scrollToSection } = useScrollContext();
   const { currentSize } = useScreenDimensionsContext();
   const textContainerInnerPaddingY = useMemo(
@@ -130,6 +132,11 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
     config: DefaultAnimationConfigFastBounce,
   });
 
+  const handlePressedWatchFreeSection = useCallback(() => {
+    logEvent(AnalyticEvent.PressedWatchFreeSection);
+    scrollToSection(Section.Offer);
+  }, [logEvent, scrollToSection]);
+
   const circles = useMemo(() => {
     if (currentSize !== 'xs')
       return (
@@ -160,7 +167,7 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
                     color="white"
                     textAlign="center"
                   >
-                    JavaScript to TypeScript
+                    An Introduction to TypeScript
                   </Typography>
                 </animated.div>
                 <animated.div style={subtitleSpring}>
@@ -177,8 +184,8 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
                       color="white"
                       textAlign="center"
                     >
-                      A short course to introduce JavaScript developers to the
-                      magic of TypeScript
+                      A short video course to introduce JavaScript developers to
+                      the magic of TypeScript
                     </Typography>
                   </Box>
                   <Box
@@ -235,6 +242,7 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
                   width="100%"
                   aspectRatio={VIDEO_CONTAINER_ASPECT_RATIO}
                   backgroundColor="black"
+                  onPlay={() => logEvent(AnalyticEvent.PlayedIntroVideo)}
                 />
               </animated.div>
             </GridColumn>
@@ -245,10 +253,7 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
               span={responsiveValue(currentSize, 10, 6)}
             >
               <animated.div style={buttonSpring}>
-                <Button
-                  textStyle="h3"
-                  onPress={() => scrollToSection(Section.Offer)}
-                >
+                <Button textStyle="h3" onPress={handlePressedWatchFreeSection}>
                   Watch the free section
                 </Button>
               </animated.div>

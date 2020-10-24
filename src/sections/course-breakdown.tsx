@@ -109,7 +109,7 @@ const CourseBreakdownSection = ({ isVisible }: SectionProps) => {
                 }
               />
               <CourseStatistic
-                title="2 hours"
+                title="~ 2 hours"
                 mr="twenty"
                 icon={
                   <ClockOutline
@@ -121,7 +121,7 @@ const CourseBreakdownSection = ({ isVisible }: SectionProps) => {
             </Box>
             <Box flexDirection="row" justifyContent="center" mt="ten">
               <CourseStatistic
-                title="2K Super HQ Video Quality"
+                title="HQ 2K 60fps video"
                 mr="twenty"
                 icon={
                   <VideoCameraOutline

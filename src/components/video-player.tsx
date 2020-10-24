@@ -6,12 +6,14 @@ interface VideoPlayerProps extends Omit<BoxProps, 'children' | 'color'> {
   aspectRatio: number;
   vimeoId: string;
   title: string;
+  onPlay?: () => void;
 }
 
 const VideoPlayer = ({
   aspectRatio,
   vimeoId,
   title,
+  onPlay,
   ...rest
 }: VideoPlayerProps) => {
   const { currentSize } = useScreenDimensionsContext();
@@ -37,6 +39,7 @@ const VideoPlayer = ({
         src={`https://player.vimeo.com/video/${vimeoId}`}
         frameBorder="0"
         allow="autoplay; fullscreen"
+        onPlay={onPlay}
         allowFullScreen
       ></iframe>
     </Box>

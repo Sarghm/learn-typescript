@@ -1,12 +1,12 @@
 import React, { useCallback, useContext, createContext } from 'react';
 
 export enum AnalyticEvent {
-  PressedWatchFreeSection,
-  PressedNagComponentBuyNow,
-  PressedPurchase,
-  ViewedSection,
-  PlayedIntroVideo,
-  PlayedSampleChapter,
+  PressedWatchFreeSection = 'pressed_watch_free_section',
+  PressedNagComponentBuyNow = 'pressed_nag_component_buy_now',
+  PressedPurchase = 'pressed_purchase',
+  ViewedSection = 'viewed_section',
+  PlayedIntroVideo = 'played_intro_video',
+  PlayedSampleChapter = 'played_sample_chapter',
 }
 
 interface AnalyticsContextProps {
@@ -15,7 +15,7 @@ interface AnalyticsContextProps {
 
 // Firebase is imported as a separate lib beforehand, so we lose types here
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const FirebaseAnalytics = (window as any).analytics;
+const Firebase = (window as any).firebase;
 
 const AnalyticsContext = createContext<{
   logEvent: (event: AnalyticEvent, details?: Record<string, string>) => void;
@@ -27,8 +27,8 @@ const AnalyticsContext = createContext<{
 const AnalyticsContextProvider = ({ children }: AnalyticsContextProps) => {
   const logEvent = useCallback(
     (event: AnalyticEvent, details?: Record<string, string>) => {
-      if (!FirebaseAnalytics) return;
-      FirebaseAnalytics.logEvent(event, details || {});
+      if (!Firebase) return;
+      Firebase.analytics().logEvent(event, details || {});
     },
     []
   );

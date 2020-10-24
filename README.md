@@ -30,14 +30,14 @@
 [x] Re-balance audio input
 [x] Add a "what do I get?" list section 
 [ ] Set up Codesnap email
-[ ] Gumroad Integration
+[x] Gumroad Integration
 [ ] Add an FAQ bit at the bottom
-[ ] Gumroad copy
-[ ] Gumroad artwork
+[x] Gumroad copy
+[x] Gumroad artwork
 [ ] Cookies Policy
-[ ] Analytics & tracking funnels
-[ ] Header banner
-[ ] Red text on discount
+[x] Analytics & tracking funnels
+[x] Header banner
+[x] Red text on discount
 [ ] Advertisement artwork
 
 ## What do I get?

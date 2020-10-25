@@ -4,7 +4,6 @@ export enum AnalyticEvent {
   PressedWatchFreeSection = 'pressed_watch_free_section',
   PressedNagComponentBuyNow = 'pressed_nag_component_buy_now',
   PressedPurchase = 'pressed_purchase',
-  ViewedSection = 'viewed_section',
   PlayedIntroVideo = 'played_intro_video',
   PlayedSampleChapter = 'played_sample_chapter',
 }

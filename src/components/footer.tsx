@@ -80,7 +80,7 @@ const Footer = () => {
         <FooterItem
           title="Not happy with your purchase?"
           subtitle="Click here to send an email and I'll issue you a refund, no questions asked."
-          href={`mailto:${SUPPORT_EMAIL_ADDRESS}&subject=Refund Request`}
+          href={`mailto:${SUPPORT_EMAIL_ADDRESS}?subject=Refund Request`}
           icon={
             <QuestionMarkCircleOutline
               size={DEFAULT_ICON_SIZE_SM}

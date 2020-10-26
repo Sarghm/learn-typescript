@@ -31,7 +31,13 @@ const AnalyticsContextProvider = ({ children }: AnalyticsContextProps) => {
     (event: AnalyticEvent, details?: Record<string, string>) => {
       if (!Firebase) return;
       Firebase.analytics().logEvent(event, details || {});
-      FacebookPixel('track', event);
+      FacebookPixel(
+        'track',
+        event,
+        event === AnalyticEvent.PressedPurchase
+          ? { currency: 'GBP', value: '9.99' }
+          : undefined
+      );
     },
     []
   );

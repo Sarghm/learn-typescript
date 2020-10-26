@@ -24,6 +24,8 @@ import { Footer } from '../components/footer';
 import { PurchaseTile, PurchaseTileProps } from '../components/purchase-tile';
 import { PURCHASE_URL } from '../consts/urls';
 import { AnalyticEvent, useAnalyticsContext } from '../context/analytics';
+import { useRegion } from '../hooks/use-region';
+import { PRICING } from '../consts/pricing';
 
 const PURCHASE_POINTS: InfoPointProps[] = [
   {
@@ -55,42 +57,47 @@ const PURCHASE_POINTS: InfoPointProps[] = [
   },
 ];
 
-const PURCHASE_BUNDLE: PurchaseTileProps = {
-  title: 'An Introduction to TypeScript Video Course',
-  items: [
-    {
-      title:
-        'Access to download all 16 high-quality videos in the course to watch at your own pace',
-    },
-    {
-      title:
-        'Access to stream all of the video content on web or mobile with no expiration date',
-    },
-    {
-      title: 'Access to all of the code you see in the videos',
-    },
-    {
-      title: 'Free future updates to the course',
-    },
-    {
-      title:
-        "100% money back guarantee - if you're not happy, email us and we'll give you a full refund, no questions asked",
-    },
-  ],
-  offer: (
-    <Typography textStyle="body" color="red" textAlign="center">
-      50% off - buy now for{' '}
-      <span style={{ textDecoration: 'line-through' }}>£19.99</span>{' '}
-      <span style={{ fontFamily: theme.textStyles.h4.fontFamily }}>£9.99</span>
-    </Typography>
-  ),
-  cta: 'Buy now',
-};
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const PurchaseSection = ({ isVisible }: SectionProps) => {
   const { logEvent } = useAnalyticsContext();
   const { currentSize } = useScreenDimensionsContext();
+  const { region } = useRegion();
+
+  const PURCHASE_BUNDLE: PurchaseTileProps = {
+    title: 'An Introduction to TypeScript Video Course',
+    items: [
+      {
+        title:
+          'Access to download all 16 high-quality videos in the course to watch at your own pace',
+      },
+      {
+        title:
+          'Access to stream all of the video content on web or mobile with no expiration date',
+      },
+      {
+        title: 'Access to all of the code you see in the videos',
+      },
+      {
+        title: 'Free future updates to the course',
+      },
+      {
+        title:
+          "100% money back guarantee - if you're not happy, email us and we'll give you a full refund, no questions asked",
+      },
+    ],
+    offer: (
+      <Typography textStyle="body" color="red" textAlign="center">
+        50% off - buy now for{' '}
+        <span style={{ textDecoration: 'line-through' }}>
+          {PRICING[region].fullPrice}
+        </span>{' '}
+        <span style={{ fontFamily: theme.textStyles.h4.fontFamily }}>
+          {PRICING[region].salePrice}
+        </span>
+      </Typography>
+    ),
+    cta: 'Buy now',
+  };
 
   const handlePressedPurchase = useCallback(() => {
     logEvent(AnalyticEvent.PressedPurchase);

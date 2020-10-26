@@ -254,7 +254,7 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
             >
               <animated.div style={buttonSpring}>
                 <Button textStyle="h3" onPress={handlePressedWatchFreeSection}>
-                  Watch the free section
+                  Watch a free chapter
                 </Button>
               </animated.div>
             </GridColumn>

@@ -93,8 +93,8 @@ const Footer = () => {
           color="white-eighty"
           textAlign="center"
         >
-          CodeSnap is trading under the name of Code Without Limits Ltd, a
-          company registered in England and Wales with company number 12613907.
+          CodeSnap is the trading name of Code Without Limits Ltd, a company
+          registered in England and Wales with company number 12613907.
         </Typography>
       </Box>
     </Box>

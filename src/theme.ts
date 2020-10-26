@@ -27,6 +27,7 @@ const theme = {
     'white-ten': `rgba(255,255,255,0.1)`,
     'white-twenty': `rgba(255,255,255,0.2)`,
     'white-forty': `rgba(255,255,255,0.4)`,
+    'white-eighty': `rgba(255,255,255,0.8)`,
     grey: `rgba(250,190,200,1)`,
     pink: 'rgba(255,99,146,1)',
     'pink-forty': 'rgba(255,99,146,0.4)',

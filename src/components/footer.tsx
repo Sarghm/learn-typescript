@@ -1,7 +1,7 @@
 import { QuestionMarkCircleOutline } from 'heroicons-react';
 import React from 'react';
 import { DEFAULT_ICON_SIZE_SM } from '../consts/icons';
-import { GITHUB_URL, SUPPORT_EMAIL_ADDRESS } from '../consts/urls';
+import { SUPPORT_EMAIL_ADDRESS } from '../consts/urls';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { theme } from '../theme';
 import { responsiveValue } from '../utils/dimensions';
@@ -73,20 +73,6 @@ const Footer = () => {
           p="twenty"
         />
         <FooterItem
-          title="GitHub Repo"
-          subtitle="This website was written using TypeScript! Check out the source code."
-          href={GITHUB_URL}
-          icon={
-            <img
-              alt="GitHub Logo"
-              src="/icons/github.svg"
-              width={DEFAULT_ICON_SIZE_SM}
-              height={DEFAULT_ICON_SIZE_SM}
-            />
-          }
-          p="twenty"
-        />
-        <FooterItem
           title="CodeSnap"
           subtitle="CodeSnap is an upcoming platform that houses all of Sam's online courses."
           href="https://www.codesnap.io"
@@ -100,6 +86,16 @@ const Footer = () => {
           }
           p="twenty"
         />
+      </Box>
+      <Box mb="twenty" flexGrow={1}>
+        <Typography
+          textStyle="bodySmall"
+          color="white-eighty"
+          textAlign="center"
+        >
+          CodeSnap is trading under the name of Code Without Limits Ltd, a
+          company registered in England and Wales with company number 12613907.
+        </Typography>
       </Box>
     </Box>
   );

@@ -1,8 +1,10 @@
 import React, { useCallback } from 'react';
+import { PRICING } from '../consts/pricing';
 import { Section } from '../consts/sections';
 import { AnalyticEvent, useAnalyticsContext } from '../context/analytics';
 import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { useScrollContext } from '../context/scroll';
+import { useRegion } from '../hooks/use-region';
 import { theme } from '../theme';
 import { responsiveValue } from '../utils/dimensions';
 import { Box } from './box';
@@ -18,6 +20,7 @@ const PurchasePrompt = ({ visible = false }: PurchasePromptProps) => {
   const { currentSize } = useScreenDimensionsContext();
   const { logEvent } = useAnalyticsContext();
   const { scrollToSection } = useScrollContext();
+  const { region } = useRegion();
 
   const handlePressedNagComponentButton = useCallback(() => {
     logEvent(AnalyticEvent.PressedNagComponentBuyNow);
@@ -54,9 +57,11 @@ const PurchasePrompt = ({ visible = false }: PurchasePromptProps) => {
             textAlign="center"
           >
             Get full access to the course for{' '}
-            <span style={{ textDecoration: 'line-through' }}>£19.99</span>{' '}
+            <span style={{ textDecoration: 'line-through' }}>
+              {PRICING[region].fullPrice}
+            </span>{' '}
             <span style={{ fontFamily: theme.textStyles.h4.fontFamily }}>
-              £9.99
+              {PRICING[region].salePrice}
             </span>
             !
           </Typography>

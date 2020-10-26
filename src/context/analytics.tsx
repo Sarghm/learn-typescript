@@ -1,4 +1,7 @@
 import React, { useCallback, useContext, createContext } from 'react';
+import { PRICING } from '../consts/pricing';
+import { useRegion } from '../hooks/use-region';
+import { Region } from '../utils/get-region';
 
 export enum AnalyticEvent {
   PressedWatchFreeSection = 'pressed_watch_free_section',
@@ -27,6 +30,8 @@ const AnalyticsContext = createContext<{
 });
 
 const AnalyticsContextProvider = ({ children }: AnalyticsContextProps) => {
+  const { region } = useRegion();
+
   const logEvent = useCallback(
     (event: AnalyticEvent, details?: Record<string, string>) => {
       if (!Firebase) return;
@@ -35,11 +40,14 @@ const AnalyticsContextProvider = ({ children }: AnalyticsContextProps) => {
         'track',
         event,
         event === AnalyticEvent.PressedPurchase
-          ? { currency: 'GBP', value: '9.99' }
+          ? {
+              currency: region === Region.UK ? 'GBP' : 'USD',
+              value: PRICING[region].salePriceNoSymbol,
+            }
           : undefined
       );
     },
-    []
+    [region]
   );
 
   return (

@@ -52,7 +52,12 @@ const Footer = () => {
   const { currentSize } = useScreenDimensionsContext();
 
   return (
-    <Box px="thirty" flexDirection="column" alignSelf="normal">
+    <Box
+      px="thirty"
+      flexDirection="column"
+      alignSelf="normal"
+      alignItems="center"
+    >
       <Box height={1} backgroundColor="white-forty" />
       <Box
         flexDirection={responsiveValue(currentSize, 'column', 'row')}
@@ -87,14 +92,17 @@ const Footer = () => {
           p="twenty"
         />
       </Box>
-      <Box mb="twenty" flexGrow={1}>
+
+      <Box mb="twenty" flexGrow={1} width="50%" flexDirection="column">
+        <Box height={1} backgroundColor="white-forty" flexGrow={1} mb="ten" />
         <Typography
           textStyle="bodySmall"
           color="white-eighty"
           textAlign="center"
         >
-          CodeSnap is the trading name of Code Without Limits Ltd, a company
-          registered in England and Wales with company number 12613907.
+          CodeSnap is the trading name of Code Without Limits Limited, a company
+          registered in England with the company number 12613907, registered at
+          the address 20-22, Wenlock Road, London, England, N1 7GU .
         </Typography>
       </Box>
     </Box>

@@ -15,6 +15,9 @@ interface AnalyticsContextProps {
 // Firebase is imported as a separate lib beforehand, so we lose types here
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Firebase = (window as any).firebase;
+// Facebook Pixel is imported as a separate lib beforehand, so we lose types here
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const FacebookPixel = (window as any).fbq;
 
 const AnalyticsContext = createContext<{
   logEvent: (event: AnalyticEvent, details?: Record<string, string>) => void;
@@ -28,6 +31,7 @@ const AnalyticsContextProvider = ({ children }: AnalyticsContextProps) => {
     (event: AnalyticEvent, details?: Record<string, string>) => {
       if (!Firebase) return;
       Firebase.analytics().logEvent(event, details || {});
+      FacebookPixel('track', event);
     },
     []
   );

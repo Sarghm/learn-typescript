@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useScreenDimensionsContext } from '../context/screen-dimensions';
 import { theme } from '../theme';
+import { responsiveValue } from '../utils/dimensions';
 import { Box } from './box';
 import { StickyPrompt } from './sticky-prompt';
 import { Typography } from './typography';
@@ -14,20 +16,22 @@ const StyledButton = styled.button`
   border: 0;
   outline: 0;
   background-color: ${(props) => props.theme.colors.pink};
-  font-family: ${(props) => props.theme.textStyles.bodySmall.fontFamily};
+  font-family: ${(props) => props.theme.textStyles.body.fontFamily};
   color: ${(props) => props.theme.colors.white};
   padding: ${(props) => props.theme.space.five}px;
   border-radius: ${(props) => props.theme.radii.sm}px;
 `;
 
 const CookiesPrompt = ({ visible = false, onDismiss }: PurchasePromptProps) => {
+  const { currentSize } = useScreenDimensionsContext();
+
   return (
     <StickyPrompt
       visible={visible}
       style={{
-        width: 400,
-        bottom: 10,
-        left: 10,
+        width: responsiveValue(currentSize, '100%', '400px'),
+        bottom: responsiveValue(currentSize, 0, 10),
+        right: responsiveValue(currentSize, 0, 10),
         borderRadius: theme.radii.sm,
         overflow: 'hidden',
         zIndex: theme.zIndices.purchasePrompt,
@@ -50,7 +54,10 @@ const CookiesPrompt = ({ visible = false, onDismiss }: PurchasePromptProps) => {
             for further details.
           </Typography>
           <Box mt="ten">
-            <Typography textStyle="bodySmall" color="black">
+            <Typography
+              textStyle={responsiveValue(currentSize, 'body', 'bodySmall')}
+              color="black"
+            >
               <StyledButton onClick={onDismiss}>Dismiss</StyledButton>
             </Typography>
           </Box>

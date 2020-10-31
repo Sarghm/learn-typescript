@@ -53,7 +53,7 @@ const Footer = () => {
 
   return (
     <Box
-      px="thirty"
+      px={responsiveValue(currentSize, 'ten', 'thirty')}
       flexDirection="column"
       alignSelf="normal"
       alignItems="center"

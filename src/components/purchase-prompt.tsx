@@ -49,7 +49,7 @@ const PurchasePrompt = ({ visible = false }: PurchasePromptProps) => {
         <Box
           mr="ten"
           mb="ten"
-          width={responsiveValue(currentSize, '70%', 'auto')}
+          width={responsiveValue(currentSize, '60%', 'auto')}
         >
           <Typography
             textStyle={responsiveValue(currentSize, 'body', 'h4Light')}

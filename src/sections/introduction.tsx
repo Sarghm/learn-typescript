@@ -64,7 +64,7 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
   const { scrollToSection } = useScrollContext();
   const { currentSize } = useScreenDimensionsContext();
   const textContainerInnerPaddingY = useMemo(
-    () => responsiveValue(currentSize, 'fifty', 'oneHundred'),
+    () => responsiveValue(currentSize, 'thirty', 'oneHundred'),
     [currentSize]
   );
 
@@ -173,7 +173,11 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
                 <animated.div style={subtitleSpring}>
                   <Box
                     mt={responsiveValue(currentSize, 'ten', 'twenty')}
-                    px={textContainerInnerPaddingY}
+                    px={responsiveValue(
+                      currentSize,
+                      'zero',
+                      textContainerInnerPaddingY
+                    )}
                   >
                     <Typography
                       textStyle={responsiveValue(
@@ -197,20 +201,22 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
                     mb="ten"
                     width="50%"
                   />
-                  <Box flexDirection="column" alignItems="center">
-                    <Typography
-                      textStyle="bodySmall"
-                      color="white"
-                      textAlign="center"
-                    >
-                      Presented by
-                    </Typography>
-                    <img
-                      src="/images/codesnap-logo.png"
-                      width={CODESNAP_LOGO_WIDTH}
-                      alt="CodeSnap Logo"
-                    />
-                  </Box>
+                  {currentSize !== 'xs' ? (
+                    <Box flexDirection="column" alignItems="center">
+                      <Typography
+                        textStyle="bodySmall"
+                        color="white"
+                        textAlign="center"
+                      >
+                        Presented by
+                      </Typography>
+                      <img
+                        src="/images/codesnap-logo.png"
+                        width={CODESNAP_LOGO_WIDTH}
+                        alt="CodeSnap Logo"
+                      />
+                    </Box>
+                  ) : null}
                 </animated.div>
               </Box>
             </GridColumn>

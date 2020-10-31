@@ -97,7 +97,11 @@ const CourseBreakdownSection = ({ isVisible }: SectionProps) => {
       <GridContainer currentSize={currentSize}>
         <GridRow>
           <GridColumn span={12}>
-            <Box flexDirection="row" justifyContent="center">
+            <Box
+              flexDirection={responsiveValue(currentSize, 'column', 'row')}
+              alignItems={responsiveValue(currentSize, 'center', 'auto')}
+              justifyContent="center"
+            >
               <CourseStatistic
                 title="16 Videos"
                 mr="twenty"
@@ -111,6 +115,7 @@ const CourseBreakdownSection = ({ isVisible }: SectionProps) => {
               <CourseStatistic
                 title="~ 2 hours"
                 mr="twenty"
+                mt={responsiveValue(currentSize, 'five', 'zero')}
                 icon={
                   <ClockOutline
                     size={DEFAULT_ICON_SIZE_SM}
@@ -119,10 +124,16 @@ const CourseBreakdownSection = ({ isVisible }: SectionProps) => {
                 }
               />
             </Box>
-            <Box flexDirection="row" justifyContent="center" mt="ten">
+            <Box
+              flexDirection={responsiveValue(currentSize, 'column', 'row')}
+              alignItems={responsiveValue(currentSize, 'center', 'auto')}
+              justifyContent="center"
+              mt={responsiveValue(currentSize, 'zero', 'ten')}
+            >
               <CourseStatistic
                 title="HQ 2K 60fps video"
                 mr="twenty"
+                mt={responsiveValue(currentSize, 'five', 'zero')}
                 icon={
                   <VideoCameraOutline
                     size={DEFAULT_ICON_SIZE_SM}
@@ -132,6 +143,7 @@ const CourseBreakdownSection = ({ isVisible }: SectionProps) => {
               />
               <CourseStatistic
                 title="Pay once, yours forever"
+                mt={responsiveValue(currentSize, 'five', 'zero')}
                 icon={
                   <CloudDownloadOutline
                     size={DEFAULT_ICON_SIZE_SM}

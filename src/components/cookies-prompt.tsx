@@ -31,7 +31,7 @@ const CookiesPrompt = ({ visible = false, onDismiss }: PurchasePromptProps) => {
       style={{
         width: responsiveValue(currentSize, '100%', '400px'),
         bottom: responsiveValue(currentSize, 0, 10),
-        right: responsiveValue(currentSize, 0, 10),
+        left: responsiveValue(currentSize, 0, 10),
         borderRadius: theme.radii.sm,
         overflow: 'hidden',
         zIndex: theme.zIndices.purchasePrompt,

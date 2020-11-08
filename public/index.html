@@ -54,9 +54,7 @@
       name="description"
       content="Learn the essentials of TypeScript in two hours"
     />
-    <title>
-      CodeSnap | An Introduction to TypeScript
-    </title>
+    <title>CodeSnap | An Introduction to TypeScript</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -75,6 +73,20 @@
       };
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-181206095-1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-181206095-1');
     </script>
     <!-- Facebook Pixel Code -->
     <script>

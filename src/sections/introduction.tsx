@@ -268,7 +268,7 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
           <GridRow
             pt="fifty"
             withGutter={responsiveValue(currentSize, true, false)}
-            pb={responsiveValue(currentSize, undefined, 'oneHundred')}
+            pb={responsiveValue(currentSize, undefined, 'fifty')}
             flexDirection={responsiveValue(currentSize, 'column', 'row')}
             alignItems="flex-start"
           >

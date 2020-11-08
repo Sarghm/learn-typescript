@@ -39,6 +39,7 @@ const TESTIMONIALS: TestimonialProps[] = [
   },
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const TestimonialsSection = ({ isVisible }: SectionProps) => {
   const [isAnimatedIn, setIsAnimatedIn] = useState<boolean>(false);
   const { currentSize } = useScreenDimensionsContext();
@@ -57,8 +58,8 @@ const TestimonialsSection = ({ isVisible }: SectionProps) => {
   }, [maxItemsPerRow]);
 
   useEffect(() => {
-    setIsAnimatedIn(isAnimatedIn || isVisible);
-  }, [isAnimatedIn, isVisible]);
+    setIsAnimatedIn(true);
+  }, []);
 
   const testimonialsSpring = useTrail(TESTIMONIALS.length, {
     opacity: isAnimatedIn ? 1 : 0,

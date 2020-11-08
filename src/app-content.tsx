@@ -48,14 +48,12 @@ const AppContent = () => {
       <IntroductionSection isVisible={activeSection === Section.Introduction} />
       <WobblyLine
         backgroundColor="white"
-        foregroundColor="black"
+        foregroundColor="green"
         {...wobblyLineWidthProps}
       />
-      <CourseChecklistSection
-        isVisible={activeSection === Section.CourseChecklist}
-      />
+      <TestimonialsSection isVisible={activeSection === Section.Testimonials} />
       <WobblyLine
-        backgroundColor="black"
+        backgroundColor="green"
         foregroundColor="pink"
         {...wobblyLineWidthProps}
       />
@@ -64,6 +62,14 @@ const AppContent = () => {
       />
       <WobblyLine
         backgroundColor="pink"
+        foregroundColor="black"
+        {...wobblyLineWidthProps}
+      />
+      <CourseChecklistSection
+        isVisible={activeSection === Section.CourseChecklist}
+      />
+      <WobblyLine
+        backgroundColor="black"
         foregroundColor="white"
         {...wobblyLineWidthProps}
       />

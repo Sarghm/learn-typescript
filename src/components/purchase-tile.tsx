@@ -10,6 +10,7 @@ export interface PurchaseTileProps {
   offer?: React.ReactNode;
   cta: string;
   onPress?: () => void;
+  bottomComponent?: React.ReactNode;
 }
 
 const PurchaseTile = ({
@@ -18,6 +19,7 @@ const PurchaseTile = ({
   offer,
   cta,
   onPress,
+  bottomComponent,
 }: PurchaseTileProps) => {
   return (
     <Box
@@ -60,17 +62,7 @@ const PurchaseTile = ({
             {cta}
           </Button>
         </Box>
-      </Box>
-      <Box mt="twenty">
-        <Typography
-          textStyle="bodySmall"
-          color="black-sixty"
-          textAlign="center"
-        >
-          After clicking the purchase button above, you&apos;ll be taken to our
-          secure payment portal. We don&apos;t process or keep your payment
-          details on record!
-        </Typography>
+        {bottomComponent}
       </Box>
     </Box>
   );

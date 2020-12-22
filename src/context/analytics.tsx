@@ -9,6 +9,7 @@ export enum AnalyticEvent {
   PressedPurchase = 'pressed_purchase',
   PlayedIntroVideo = 'played_intro_video',
   PlayedSampleChapter = 'played_sample_chapter',
+  WatchCourseFree = 'watch_on_youtube',
 }
 
 interface AnalyticsContextProps {

@@ -22,7 +22,7 @@ import { responsiveValue } from '../utils/dimensions';
 import { SectionProps } from './shared';
 import { Footer } from '../components/footer';
 import { PurchaseTile, PurchaseTileProps } from '../components/purchase-tile';
-import { PURCHASE_URL } from '../consts/urls';
+import { PURCHASE_URL, WATCH_FREE_URL } from '../consts/urls';
 import { AnalyticEvent, useAnalyticsContext } from '../context/analytics';
 import { useRegion } from '../hooks/use-region';
 import { PRICING } from '../consts/pricing';
@@ -63,8 +63,24 @@ const PurchaseSection = ({ isVisible }: SectionProps) => {
   const { currentSize } = useScreenDimensionsContext();
   const { region } = useRegion();
 
-  const PURCHASE_BUNDLE: PurchaseTileProps = {
-    title: 'An Introduction to TypeScript Video Course',
+  const FREE_BUNDLE: PurchaseTileProps = {
+    title: 'Watch for free',
+    items: [
+      {
+        title: 'Stream the whole course for free on YouTube!',
+      },
+      {
+        title: 'Subscribe for more tutorials and courses',
+      },
+      {
+        title: 'Engage with the community in the comments',
+      },
+    ],
+    cta: 'Watch now for free',
+  };
+
+  const PRO_BUNDLE: PurchaseTileProps = {
+    title: 'Pro Bundle',
     items: [
       {
         title:
@@ -97,11 +113,29 @@ const PurchaseSection = ({ isVisible }: SectionProps) => {
       </Typography>
     ),
     cta: 'Buy now',
+    bottomComponent: (
+      <Box mt="twenty">
+        <Typography
+          textStyle="bodySmall"
+          color="black-sixty"
+          textAlign="center"
+        >
+          After clicking the purchase button above, you&apos;ll be taken to our
+          secure payment portal. We don&apos;t process or keep your payment
+          details on record!
+        </Typography>
+      </Box>
+    ),
   };
 
   const handlePressedPurchase = useCallback(() => {
     logEvent(AnalyticEvent.PressedPurchase);
     window.open(PURCHASE_URL);
+  }, [logEvent]);
+
+  const handlePressedWatchFree = useCallback(() => {
+    logEvent(AnalyticEvent.WatchCourseFree);
+    window.open(WATCH_FREE_URL);
   }, [logEvent]);
 
   return (
@@ -112,15 +146,23 @@ const PurchaseSection = ({ isVisible }: SectionProps) => {
       flexDirection="column"
     >
       <GridContainer currentSize={currentSize}>
+        <GridRow
+          flexDirection={responsiveValue(currentSize, 'column', 'row')}
+          alignItems="flex-end"
+        >
+          <GridColumn span={responsiveValue(currentSize, 12, 6)}>
+            <PurchaseTile {...FREE_BUNDLE} onPress={handlePressedWatchFree} />
+          </GridColumn>
+          <GridColumn span={responsiveValue(currentSize, 12, 6)}>
+            <PurchaseTile {...PRO_BUNDLE} onPress={handlePressedPurchase} />
+          </GridColumn>
+        </GridRow>
+
         <GridRow>
           <GridColumn
             offset={responsiveValue(currentSize, 0, 2)}
             span={responsiveValue(currentSize, 12, 8)}
           >
-            <PurchaseTile
-              {...PURCHASE_BUNDLE}
-              onPress={handlePressedPurchase}
-            />
             <Box mt="ten">
               <SectionMarker id={Section.Purchase} />
               <ul>

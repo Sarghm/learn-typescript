@@ -134,7 +134,7 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
 
   const handlePressedWatchFreeSection = useCallback(() => {
     logEvent(AnalyticEvent.PressedWatchFreeSection);
-    scrollToSection(Section.Offer);
+    scrollToSection(Section.Purchase);
   }, [logEvent, scrollToSection]);
 
   const circles = useMemo(() => {
@@ -260,7 +260,7 @@ const IntroductionSection = ({ isVisible }: SectionProps) => {
             >
               <animated.div style={buttonSpring}>
                 <Button textStyle="h3" onPress={handlePressedWatchFreeSection}>
-                  Watch a free chapter
+                  Get the course
                 </Button>
               </animated.div>
             </GridColumn>

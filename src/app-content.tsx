@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import { IntroductionSection } from './sections/introduction';
 import { CourseChecklistSection } from './sections/course-checklist';
 import { WhyTypeScriptSection } from './sections/why-typescript';
@@ -10,14 +10,10 @@ import { AuthorIntroductionSection } from './sections/author-introduction';
 import { WobblyLine, WobblyLineProps } from './components/wobbly-line';
 import { useScreenDimensionsContext } from './context/screen-dimensions';
 import { useMemo } from 'react';
-import { PurchasePrompt } from './components/purchase-prompt';
 import { useScrollContext } from './context/scroll';
 import { Section } from './consts/sections';
-import { CookiesPrompt } from './components/cookies-prompt';
-import { CODESNAP_COOKIES_POLICY_DISMISSED } from './consts/storage';
 
 const AppContent = () => {
-  const [showCookies, setShowCookies] = useState<boolean>(true);
   const { currentSize } = useScreenDimensionsContext();
   const { activeSection } = useScrollContext();
 
@@ -31,17 +27,6 @@ const AppContent = () => {
         : { customWidthPercentage: undefined },
     [currentSize]
   );
-
-  const showCookiesPolicy = useMemo(() => {
-    if (window.localStorage.getItem(CODESNAP_COOKIES_POLICY_DISMISSED))
-      return false;
-    return showCookies;
-  }, [showCookies]);
-
-  const handleDismissedCookiesPolicy = useCallback(() => {
-    setShowCookies(false);
-    window.localStorage.setItem(CODESNAP_COOKIES_POLICY_DISMISSED, 'true');
-  }, []);
 
   return (
     <>
@@ -102,16 +87,6 @@ const AppContent = () => {
         {...wobblyLineWidthProps}
       />
       <PurchaseSection isVisible={activeSection === Section.Purchase} />
-      <PurchasePrompt
-        visible={
-          activeSection !== Section.Introduction &&
-          activeSection !== Section.Purchase
-        }
-      />
-      <CookiesPrompt
-        visible={showCookiesPolicy}
-        onDismiss={handleDismissedCookiesPolicy}
-      />
     </>
   );
 };

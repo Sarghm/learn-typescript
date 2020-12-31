@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      property="og:title"
+      content="CodeSnap | Redirecting..."
+    />
+    <meta property="og:url" content="https://www.codesnap.io" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link href="/reset.css" rel="stylesheet" preload="true" />
+    <link
+      href="/fonts/wotfard/stylesheet.css"
+      rel="stylesheet"
+      preload="true"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;800&display=swap"
+      rel="stylesheet"
+      preload="true"
+    />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="Redirecting..."
+    />
+    <title>CodeSnap | Redirecting...</title>
+  </head>
+  <body>
+    <!-- Facebook Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        'script',
+        'https://connect.facebook.net/en_US/fbevents.js'
+      );
+      window.fbq = fbq;
+      
+      const campaignId = new URLSearchParams(window.location.search).get('campaign');
+
+      fbq('init', '1715980942001384');
+      fbq('trackCustom', `campaign-redirect-${campaignId}`)
+
+      const redirectUrl = (() => {
+        switch (campaignId) {
+            default: return 'https://www.udemy.com/course/create-an-interactive-3d-face-filter-with-spark-ar/?couponCode=NEW-YEARS-SALE'
+        }
+      })();
+
+      setTimeout(() => {
+        window.location.assign(redirectUrl)
+      }, 1000);
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1715980942001384&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <div id="root" style="overflow: hidden; width: 100%">
+        <div style="padding: 10px;">
+            <p style="font-family: 'Wotfard', sans-serif;">Redirecting...</p>
+        </div>
+    </div>
+  </body>
+</html>

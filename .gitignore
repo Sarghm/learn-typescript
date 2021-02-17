@@ -21,7 +21,7 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.woff
-.woff2
-.otf
-.ttf
+*.woff
+*.woff2
+*.otf
+*.ttf
